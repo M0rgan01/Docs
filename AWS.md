@@ -1,6 +1,6 @@
 # SERVICES LIST AWS:
 
-## Amazon Elastic Compute Cloud / EC2 (serveurs virtuels appelés instances EC2)
+#### Amazon Elastic Compute Cloud / EC2 (serveurs virtuels appelés instances EC2)
 
     - Type d'instance:
         - usage général
@@ -22,37 +22,39 @@
 
     - Load Balancing -> Elastic Load Balancing
 
-## AWS Lambda (serverless -> execution de code sur déclencheurs, 15min max)
+#### AWS Lambda (serverless -> execution de code sur déclencheurs, 15min max)
 
-## Amazon Simple Queue Service / SQS
+#### Amazon Simple Queue Service / SQS
 
-## Amazon Simple Notification Service / SNS
+#### Amazon Simple Notification Service / SNS
 
-## Amazon Elastic Container Service / ECS
+#### Amazon Elastic Container Service / ECS
 
-## Amazon Elastic Service Kubernetes / EKS
+#### Amazon Elastic Service Kubernetes / EKS
 
-## AWS Fargate (serverless -> permet d'exécuter vos conteneurs au-dessus d'une plateforme de calcul sans serveur)
+#### AWS Fargate (serverless -> permet d'exécuter vos conteneurs au-dessus d'une plateforme de calcul sans serveur)
 
-## Amazon CloudFront (CDN) -> permet de faire une copie (cache) d'une région dans une autre pour se rapprocher de certains clients
+#### Amazon CloudFront (CDN) -> permet de faire une copie (cache) d'une région dans une autre pour se rapprocher de certains clients
 
-## Amazon Route 53 (DNS) -> service de noms de domaine
+#### Amazon Route 53 (DNS) -> service de noms de domaine
 
-## Amazon Virtual Private Cloud / VPC -> permet définir les services public (accessible depuis internet) et les services privé (accessible uniquement pour les autres services, ex: DB)
+#### Amazon Virtual Private Cloud / VPC -> permet définir les services public (accessible depuis internet) et les services privé (accessible uniquement pour les autres services, ex: DB)
+
+#### Amazon Elastic Block Store / EBS -> fournit des volumes de stockage
 
 # AWS INTERACTION SERVICES
 
-## AWS Management Console (UI)
+#### AWS Management Console (UI)
 
-## AWS CLI (interface de ligne de commande)
+#### AWS CLI (interface de ligne de commande)
 
-## kits SDK (approche programmatique)
+#### kits SDK (approche programmatique)
 
-## AWS Elastic Beanstalk (infrastructure as code ?) pour :
+#### AWS Elastic Beanstalk (infrastructure as code ?) pour :
 
     - Ajustement de la capacité
     - Load balancing
     - Mise à l'échelle automatique
     - Surveillance de la santé des application
 
-## AWS CloudFormation (infrastructure as code -> json, yaml...)
+#### AWS CloudFormation (infrastructure as code -> json, yaml...)
