@@ -24,13 +24,12 @@
 
 Load Balancing -> Elastic Load Balancing
 
-![Foo](img/LoadBalancingAWS.png)
-
-<img src="img/LoadBalancingAWS.png"
-alt="Markdown Monster icon"
-width="50%"
-align="center"
-/>
+<p align="center">
+    <img src="img/LoadBalancingAWS.png"
+    alt="Markdown Monster icon"
+    width="50%"
+    />
+</p>
 
 #### AWS Lambda (serverless)
 
@@ -91,25 +90,40 @@ align="center"
     - Permet définir les services public (accessible depuis internet) 
       et les services privé (accessible uniquement pour les autres services, ex: DB)
 
-![Foo](img/VpcAWS.png)
+<p align="center">
+    <img src="img/VpcAWS.png"
+    alt="Markdown Monster icon"
+    width="50%"
+    />
+</p>
 
-##### Passerelle Internet
-
-Une passerelle Internet est une connexion entre un VPC et Internet. Vous pouvez penser qu'une passerelle Internet 
+> ##### Passerelle Internet
+>
+> Une passerelle Internet est une connexion entre un VPC et Internet. Vous pouvez penser qu'une passerelle Internet 
 est semblable à une porte que les clients utilisent pour entrer dans le système.
 Sans passerelle Internet, personne ne peut accéder aux ressources de votre VPC.
+>
+><p align="center">
+    <img src="img/GatewayAWS.png"
+    alt="Markdown Monster icon"
+    width="50%"
+    />
+</p>
 
-![Foo](img/GatewayAWS.png)
-
-##### Zone de disponibilité
-
-Une zone de disponibilité est un centre de données unique ou un groupe de centres de données au sein d'une région. 
+> ##### Zone de disponibilité
+>
+> Une zone de disponibilité est un centre de données unique ou un groupe de centres de données au sein d'une région. 
 Les zones de disponibilité sont situées à des dizaines de kilomètres les unes des autres. C'est assez proche pour 
 avoir une faible latence (le temps entre le moment où le contenu est demandé et le moment où il est reçu) entre les 
 zones de disponibilité. Toutefois, si un sinistre survient dans une partie de la région, elle est suffisamment éloignée 
 pour réduire les risques que plusieurs zones de disponibilité soient affectées.
-
-![Foo](img/RegionAWS.png)
+> 
+> <p align="center">
+    <img src="img/RegionAWS.png"
+    alt="Markdown Monster icon"
+    width="50%"
+    />
+</p>
 
 # STORAGE
 
@@ -134,9 +148,9 @@ pour réduire les risques que plusieurs zones de disponibilité soient affectée
     - Stockage illimité
 
 
-##### Bloc vs Object
-
-Le stockage d'objets traite n'importe quel fichier comme un objet complet et discret.
+> ##### Bloc vs Object
+> 
+> Le stockage d'objets traite n'importe quel fichier comme un objet complet et discret.
 C'est génial pour les documents et les fichiers image et vidéo qui sont téléchargés et consommés en tant qu'objets entiers,
 mais chaque fois qu'il y a une modification de l'objet, vous devez télécharger à nouveau l'intégralité du fichier.
 Il n'y a pas de mises à jour delta. Le stockage par bloc décompose ces fichiers en petites parties ou blocs de composants.
