@@ -1,6 +1,6 @@
 # SERVICES PRINCIPAUX
 
-#### Amazon Elastic Compute Cloud / EC2 (serveurs virtuels appelés instances EC2)
+#### - Amazon Elastic Compute Cloud / EC2 (serveurs virtuels appelés instances EC2)
 
     Fournit une capacité de calcul sécurisée et redimensionnable dans le cloud en tant qu'instances Amazon EC2
 
@@ -22,8 +22,6 @@
         - dynamique
         - prédictive
 
-Load Balancing -> Elastic Load Balancing
-
 <p align="center">
     <img src="img/LoadBalancingAWS.png"
     alt="Markdown Monster icon"
@@ -31,7 +29,9 @@ Load Balancing -> Elastic Load Balancing
     />
 </p>
 
-#### AWS Lambda (serverless)
+**Load Balancing** Elastic Load Balancing
+
+#### - AWS Lambda (serverless)
 
     - Execution de code sur déclencheurs
     - 15 min max pour une exécution
@@ -39,20 +39,20 @@ Load Balancing -> Elastic Load Balancing
       telle que des services AWS, des applications mobiles ou des points de terminaison HTTP.
     - Vous ne payez que le temps de calcul que vous utilisez.
 
-#### Amazon Simple Queue Service / SQS
+#### - Amazon Simple Queue Service / SQS
     
     - Service de mise en file d'attente de messages
     - Stocker et recevoir des messages entre les composants logiciels
     - Un utilisateur ou un service extrait un message de la file d'attente, le traite, puis le supprime de la file d'attente
 
-#### Amazon Simple Notification Service / SNS
+#### - Amazon Simple Notification Service / SNS
 
     - Service de publication/d'abonnement
     - Un éditeur publie des messages à l'intention des abonnés
     - Les abonnés peuvent être des serveurs web, des adresses e-mail, 
       des fonctions AWS Lambda ou plusieurs autres options
 
-#### Amazon Elastic Container Service / ECS
+#### - Amazon Elastic Container Service / ECS
 
     - Prend en charge les conteneurs Docker
     - Utiliser les appels d'API pour lancer et arrêter des applications compatibles avec Docker
@@ -62,7 +62,7 @@ Load Balancing -> Elastic Load Balancing
     - Exécuter Kubernetes sur AWS
     - Gérer des applications conteneurisées à grande échelle
 
-#### AWS Fargate (serverless)
+#### - AWS Fargate (serverless)
     
     - Permet d'exécuter vos conteneurs au-dessus d'une plateforme de calcul serverless
     - Sans serveur pour les conteneurs
@@ -72,19 +72,19 @@ Load Balancing -> Elastic Load Balancing
 
 # NETWORK
 
-#### Amazon CloudFront (CDN)
+#### - Amazon CloudFront (CDN)
 
     - Permet de faire une copie (cache) d'une région dans une autre pour se rapprocher de certains clients
     - Emplacement périphérique ->  Site qu'Amazon CloudFront utilise pour stocker des copies mises en cache 
       de votre contenu plus près de vos clients, aux fins d'une diffusion plus rapide.
 
-#### Amazon Route 53 (DNS)
+#### - Amazon Route 53 (DNS)
 
     - Connecte les requêtes des utilisateurs à l'infrastructure s'exécutant dans AWS
     - Peut acheminer les utilisateurs vers une infrastructure en dehors d'AWS
     - Gérer les enregistrements DNS pour les noms de domaine
 
-#### Amazon Virtual Private Cloud / VPC
+#### - Amazon Virtual Private Cloud / VPC
     
     - Service de réseaux que vous pouvez utiliser pour établir des limites autour de vos ressources AWS
     - Permet définir les services public (accessible depuis internet) 
@@ -97,18 +97,22 @@ Load Balancing -> Elastic Load Balancing
     />
 </p>
 
+**VPC** public / privé
+
 > ##### Passerelle Internet
 >
 > Une passerelle Internet est une connexion entre un VPC et Internet. Vous pouvez penser qu'une passerelle Internet 
 est semblable à une porte que les clients utilisent pour entrer dans le système.
 Sans passerelle Internet, personne ne peut accéder aux ressources de votre VPC.
->
-><p align="center">
+
+<p align="center">
     <img src="img/GatewayAWS.png"
     alt="Markdown Monster icon"
     width="50%"
     />
 </p>
+
+**Passerelle Internet**
 
 > ##### Zone de disponibilité
 >
@@ -117,29 +121,31 @@ Les zones de disponibilité sont situées à des dizaines de kilomètres les une
 avoir une faible latence (le temps entre le moment où le contenu est demandé et le moment où il est reçu) entre les 
 zones de disponibilité. Toutefois, si un sinistre survient dans une partie de la région, elle est suffisamment éloignée 
 pour réduire les risques que plusieurs zones de disponibilité soient affectées.
-> 
-> <p align="center">
+
+<p align="center">
     <img src="img/RegionAWS.png"
     alt="Markdown Monster icon"
     width="50%"
     />
 </p>
 
+**Zone de disponibilité et région**
+
 # STORAGE
 
-#### Amazon Elastic Block Store / EBS -> fournit des volumes de stockage (par bloc), utilisable avec instance(s) EC2
+#### - Amazon Elastic Block Store / EBS -> fournit des volumes de stockage (par bloc), utilisable avec instance(s) EC2
 
     - Ressource de niveau 'zone de disponibilité' -> ex: centre de données us-west-1a
     - Volumes de donnée fix
 
-#### Amazon Elastic File System / EFS -> partage de fichier entre plusieurs clients (par bloc)
+#### - Amazon Elastic File System / EFS -> partage de fichier entre plusieurs clients (par bloc)
 
     - Permet plusieurs opérations simultanées en lecture / écriture
     - Système de fichiers linux
     - Ressource régionale -> ex: centre de données us-west-1a, us-west-1b, us-west-1c ...
     - Stockage illimité
 
-#### Amazon Simple Storage Service / S3 -> stockage d'objects (données, métadonnées, clé), qui est être stocké sur du long terme
+#### - Amazon Simple Storage Service / S3 -> stockage d'objects (données, métadonnées, clé), qui est être stocké sur du long terme
     
     - Objets individuels d'une taille de 5 000 gigaoctets
     - Chaque objet a une URL dont vous pouvez contrôler les droits d'accès pour décider qui peut voir ou gérer l'image.
@@ -161,25 +167,25 @@ le système doit charger les 80 gigaoctets, la totalité, à chaque fois.
 
 # AWS INTERACTION SERVICES
 
-#### AWS Management Console
+#### - AWS Management Console
 
     - Interface basée sur le web
     - Accéder à vos services AWS et les gérer
     - Surveillance des ressources, affichage des alarmes et accès aux informations de facturation
     - Plusieurs identités peuvent rester connectées à l'application mobile AWS Console en même temps
 
-#### AWS CLI
+#### - AWS CLI
 
     - Interface de ligne de commande
     - Contrôler plusieurs services AWS directement à partir de la ligne de commande
     - Disponible pour les utilisateurs sous Windows, macOS et Linux 
     - Automatiser les actions effectuées par vos services et applications à l'aide de scripts
 
-#### Kits SDK (approche programmatique)
+#### - Kits SDK (approche programmatique)
 
     - API conçue pour votre langage de programmation ou votre plateforme
 
-#### AWS Elastic Beanstalk
+#### - AWS Elastic Beanstalk
 
     Vous fournissez le code et les paramètres de configuration, et Elastic Beanstalk déploie les ressources 
     nécessaires pour effectuer les tâches suivantes :
@@ -189,7 +195,7 @@ le système doit charger les 80 gigaoctets, la totalité, à chaque fois.
         - Mise à l'échelle automatique
         - Surveillance de la santé des application
 
-#### AWS CloudFormation
+#### - AWS CloudFormation
 
     - Infrastructure as code (json, yaml...)
 
