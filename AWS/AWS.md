@@ -22,26 +22,36 @@
         - dynamique
         - prédictive
 
-    Load Balancing -> Elastic Load Balancing
+Load Balancing -> Elastic Load Balancing
+
+![Foo](img/LoadBalancingAWS.png)
+
+<img src="img/LoadBalancingAWS.png"
+alt="Markdown Monster icon"
+width="50%"
+align="center"
+/>
 
 #### AWS Lambda (serverless)
 
     - Execution de code sur déclencheurs
     - 15 min max pour une exécution
-    - Se déclenche à partir d'une source d'événement, telle que des services AWS, des applications mobiles ou des points de terminaison HTTP.
+    - Se déclenche à partir d'une source d'événement, 
+      telle que des services AWS, des applications mobiles ou des points de terminaison HTTP.
     - Vous ne payez que le temps de calcul que vous utilisez.
 
 #### Amazon Simple Queue Service / SQS
     
     - Service de mise en file d'attente de messages
     - Stocker et recevoir des messages entre les composants logiciels
-    -  Un utilisateur ou un service extrait un message de la file d'attente, le traite, puis le supprime de la file d'attente
+    - Un utilisateur ou un service extrait un message de la file d'attente, le traite, puis le supprime de la file d'attente
 
 #### Amazon Simple Notification Service / SNS
 
     - Service de publication/d'abonnement
     - Un éditeur publie des messages à l'intention des abonnés
-    - Les abonnés peuvent être des serveurs web, des adresses e-mail, des fonctions AWS Lambda ou plusieurs autres options
+    - Les abonnés peuvent être des serveurs web, des adresses e-mail, 
+      des fonctions AWS Lambda ou plusieurs autres options
 
 #### Amazon Elastic Container Service / ECS
 
@@ -66,7 +76,8 @@
 #### Amazon CloudFront (CDN)
 
     - Permet de faire une copie (cache) d'une région dans une autre pour se rapprocher de certains clients
-    - Emplacement périphérique ->  Site qu'Amazon CloudFront utilise pour stocker des copies mises en cache de votre contenu plus près de vos clients, aux fins d'une diffusion plus rapide.
+    - Emplacement périphérique ->  Site qu'Amazon CloudFront utilise pour stocker des copies mises en cache 
+      de votre contenu plus près de vos clients, aux fins d'une diffusion plus rapide.
 
 #### Amazon Route 53 (DNS)
 
@@ -77,13 +88,28 @@
 #### Amazon Virtual Private Cloud / VPC
     
     - Service de réseaux que vous pouvez utiliser pour établir des limites autour de vos ressources AWS
-    - Permet définir les services public (accessible depuis internet) et les services privé (accessible uniquement pour les autres services, ex: DB)
+    - Permet définir les services public (accessible depuis internet) 
+      et les services privé (accessible uniquement pour les autres services, ex: DB)
+
+![Foo](img/VpcAWS.png)
 
 ##### Passerelle Internet
 
 Une passerelle Internet est une connexion entre un VPC et Internet. Vous pouvez penser qu'une passerelle Internet 
 est semblable à une porte que les clients utilisent pour entrer dans le système.
 Sans passerelle Internet, personne ne peut accéder aux ressources de votre VPC.
+
+![Foo](img/GatewayAWS.png)
+
+##### Zone de disponibilité
+
+Une zone de disponibilité est un centre de données unique ou un groupe de centres de données au sein d'une région. 
+Les zones de disponibilité sont situées à des dizaines de kilomètres les unes des autres. C'est assez proche pour 
+avoir une faible latence (le temps entre le moment où le contenu est demandé et le moment où il est reçu) entre les 
+zones de disponibilité. Toutefois, si un sinistre survient dans une partie de la région, elle est suffisamment éloignée 
+pour réduire les risques que plusieurs zones de disponibilité soient affectées.
+
+![Foo](img/RegionAWS.png)
 
 # STORAGE
 
@@ -141,7 +167,8 @@ le système doit charger les 80 gigaoctets, la totalité, à chaque fois.
 
 #### AWS Elastic Beanstalk
 
-    Vous fournissez le code et les paramètres de configuration, et Elastic Beanstalk déploie les ressources nécessaires pour effectuer les tâches suivantes :
+    Vous fournissez le code et les paramètres de configuration, et Elastic Beanstalk déploie les ressources 
+    nécessaires pour effectuer les tâches suivantes :
 
         - Ajustement de la capacité
         - Load balancing
