@@ -22,15 +22,6 @@
         - dynamique
         - prédictive
 
-<p align="center">
-    <img src="img/LoadBalancingAWS.png"
-    alt="Markdown Monster icon"
-    width="50%"
-    />
-</p>
-
-**Load Balancing** Elastic Load Balancing
-
 #### - AWS Lambda (serverless)
 
     - Execution de code sur déclencheurs
@@ -72,6 +63,20 @@
 
 # NETWORK
 
+#### - Elastic Load Balancing
+
+    - Distribue automatiquement le trafic d'application entrant sur plusieurs ressources, 
+      telles que les instances Amazon EC2
+    - Elastic Load Balancing et l'Auto Scaling Amazon EC2 travaillent ensemble des 
+      performances et une disponibilité élevées
+    
+<p align="center">
+    <img src="img/LoadBalancingAWS.png"
+    alt="Markdown Monster icon"
+    width="50%"
+    />
+</p>
+
 #### - Amazon CloudFront (CDN)
 
     - Permet de faire une copie (cache) d'une région dans une autre pour se rapprocher de certains clients
@@ -97,8 +102,6 @@
     />
 </p>
 
-**VPC** public / privé
-
 > ##### Passerelle Internet
 >
 > Une passerelle Internet est une connexion entre un VPC et Internet. Vous pouvez penser qu'une passerelle Internet 
@@ -111,8 +114,6 @@ Sans passerelle Internet, personne ne peut accéder aux ressources de votre VPC.
     width="50%"
     />
 </p>
-
-**Passerelle Internet**
 
 > ##### Zone de disponibilité
 >
@@ -128,8 +129,6 @@ pour réduire les risques que plusieurs zones de disponibilité soient affectée
     width="50%"
     />
 </p>
-
-**Zone de disponibilité et région**
 
 # STORAGE
 
