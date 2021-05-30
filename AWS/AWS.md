@@ -72,7 +72,7 @@
     
 <p align="center">
     <img src="img/LoadBalancingAWS.png"
-    alt="Markdown Monster icon"
+    alt="LoadBalancingAWS"
     width="50%"
     />
 </p>
@@ -97,7 +97,7 @@
 
 <p align="center">
     <img src="img/VpcAWS.png"
-    alt="Markdown Monster icon"
+    alt="VpcAWS"
     width="50%"
     />
 </p>
@@ -110,7 +110,7 @@ Sans passerelle Internet, personne ne peut accéder aux ressources de votre VPC.
 
 <p align="center">
     <img src="img/GatewayAWS.png"
-    alt="Markdown Monster icon"
+    alt="GatewayAWS"
     width="50%"
     />
 </p>
@@ -125,7 +125,7 @@ pour réduire les risques que plusieurs zones de disponibilité soient affectée
 
 <p align="center">
     <img src="img/RegionAWS.png"
-    alt="Markdown Monster icon"
+    alt="RegionAWS"
     width="50%"
     />
 </p>
@@ -164,6 +164,50 @@ le moteur ne met à jour que les blocs où se trouvent ces bits. Si vous faites 
 Elastic Block Storage, est le cas d'utilisation parfait. Si vous utilisiez S3, chaque fois que vous enregistrez les modifications,
 le système doit charger les 80 gigaoctets, la totalité, à chaque fois.
 
+#### - Amazon Relational Database Service / RDS
+
+**automatisation de :**
+
+    - Provisionnement matériel
+    - Configuration des bases de données
+    - Application de correctifs et les sauvegardes
+
+**Moteurs de bases de données :**
+
+    - Amazon Aurora
+    - PostgreSQL
+    - MySQL
+    - MariaDB
+    - Oracle Database
+    - Microsoft SQL Server
+
+#### - Amazon Aurora
+
+    - Base de données relationnelle d'entreprise
+    - Compatible avec MySQL et PostgreSQL
+    - Coûte 1/10e du coût des bases de données commerciales.
+    - Cinq fois plus rapide que les bases de données MySQL et trois fois plus que les bases de données PostgreSQL
+    - Réplique six copies de vos données sur trois zones de disponibilité et sauvegarde en permanence vos données
+      sur Amazon S3
+
+#### - Amazon DynamoDB
+
+    - Serverless
+    - Base de données NoSQL
+    - Entièrement géré et hautement évolutif, mise à l'échelle automatique
+    - Spécialement conçu, cas d'utilisation spécifiques   
+
+#### - Amazon Redshift
+
+    - Entreposage de données que vous pouvez utiliser pour l'analytique des Big Data
+    - 10 fois plus de performances que les bases de données traditionnelles
+
+#### - AWS Database Migration Service / AWS DMS
+
+    - permet de migrer des bases de données relationnelles, des bases de données 
+      non relationnelles ainsi que d'autres types de magasins de données.
+    - Les bases de données sources et cibles peuvent être du même type ou de types différents.
+    - La base de données reste opérationnelle pendant la migration
 # AWS INTERACTION SERVICES
 
 #### - AWS Management Console
