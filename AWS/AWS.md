@@ -31,7 +31,7 @@
     - Vous ne payez que le temps de calcul que vous utilisez.
 
 #### - Amazon Simple Queue Service / SQS
-    
+
     - Service de mise en file d'attente de messages
     - Stocker et recevoir des messages entre les composants logiciels
     - Un utilisateur ou un service extrait un message de la file d'attente, le traite, puis le supprime de la file d'attente
@@ -54,7 +54,7 @@
     - Gérer des applications conteneurisées à grande échelle
 
 #### - AWS Fargate (serverless)
-    
+
     - Permet d'exécuter vos conteneurs au-dessus d'une plateforme de calcul serverless
     - Sans serveur pour les conteneurs
     - Fonctionne avec Amazon ECS et Amazon EKS
@@ -69,7 +69,7 @@
       telles que les instances Amazon EC2
     - Elastic Load Balancing et l'Auto Scaling Amazon EC2 travaillent ensemble des 
       performances et une disponibilité élevées
-    
+
 <p align="center">
     <img src="img/LoadBalancingAWS.png"
     alt="LoadBalancingAWS"
@@ -90,7 +90,7 @@
     - Gérer les enregistrements DNS pour les noms de domaine
 
 #### - Amazon Virtual Private Cloud / VPC
-    
+
     - Service de réseaux que vous pouvez utiliser pour établir des limites autour de vos ressources AWS
     - Permet définir les services public (accessible depuis internet) 
       et les services privé (accessible uniquement pour les autres services, ex: DB)
@@ -104,7 +104,7 @@
 
 > ##### Passerelle Internet
 >
-> Une passerelle Internet est une connexion entre un VPC et Internet. Vous pouvez penser qu'une passerelle Internet 
+> Une passerelle Internet est une connexion entre un VPC et Internet. Vous pouvez penser qu'une passerelle Internet
 est semblable à une porte que les clients utilisent pour entrer dans le système.
 Sans passerelle Internet, personne ne peut accéder aux ressources de votre VPC.
 
@@ -117,10 +117,10 @@ Sans passerelle Internet, personne ne peut accéder aux ressources de votre VPC.
 
 > ##### Zone de disponibilité
 >
-> Une zone de disponibilité est un centre de données unique ou un groupe de centres de données au sein d'une région. 
-Les zones de disponibilité sont situées à des dizaines de kilomètres les unes des autres. C'est assez proche pour 
-avoir une faible latence (le temps entre le moment où le contenu est demandé et le moment où il est reçu) entre les 
-zones de disponibilité. Toutefois, si un sinistre survient dans une partie de la région, elle est suffisamment éloignée 
+> Une zone de disponibilité est un centre de données unique ou un groupe de centres de données au sein d'une région.
+Les zones de disponibilité sont situées à des dizaines de kilomètres les unes des autres. C'est assez proche pour
+avoir une faible latence (le temps entre le moment où le contenu est demandé et le moment où il est reçu) entre les
+zones de disponibilité. Toutefois, si un sinistre survient dans une partie de la région, elle est suffisamment éloignée
 pour réduire les risques que plusieurs zones de disponibilité soient affectées.
 
 <p align="center">
@@ -145,7 +145,7 @@ pour réduire les risques que plusieurs zones de disponibilité soient affectée
     - Stockage illimité
 
 #### - Amazon Simple Storage Service / S3 -> stockage d'objects (données, métadonnées, clé), qui est être stocké sur du long terme
-    
+
     - Objets individuels d'une taille de 5 000 gigaoctets
     - Chaque objet a une URL dont vous pouvez contrôler les droits d'accès pour décider qui peut voir ou gérer l'image.
     - Ressource régionale -> ex: centre de données us-west-1a, us-west-1b, us-west-1c ...
@@ -154,7 +154,7 @@ pour réduire les risques que plusieurs zones de disponibilité soient affectée
 
 
 > ##### Bloc vs Object
-> 
+>
 > Le stockage d'objets traite n'importe quel fichier comme un objet complet et discret.
 C'est génial pour les documents et les fichiers image et vidéo qui sont téléchargés et consommés en tant qu'objets entiers,
 mais chaque fois qu'il y a une modification de l'objet, vous devez télécharger à nouveau l'intégralité du fichier.
@@ -242,3 +242,25 @@ le système doit charger les 80 gigaoctets, la totalité, à chaque fois.
 
     - Infrastructure as code (json, yaml...)
 
+# SECURITY
+
+#### - AWS Identity and Access Management / IAM
+
+    - Permet de gérer, de façon sécurisée, l'accès aux services et ressources AWS
+    
+    Différentes notions ->
+
+        - **Utilisateur racine**: Identité à la création du compte, dispose d'un accès complet à tous les services 
+          et ressources AWS du compte.
+        - **Utilisateurs IAM**: identité que vous créez dans AWS, représente la personne ou l'application qui interagit 
+          avec les services et ressources AWS. Il se compose d'un nom et d'informations d'identification.
+        - **Stratégies IAM**: Document qui autorise ou refuse des autorisations aux services et ressources AWS
+        - **Groupes IAM**: Ensemble d'utilisateurs IAM, avec possibilité d'attribution de stratégies IAM au niveau du groupe
+        - **Rôles IAM**: Identité pour obtenir un accès temporaire aux autorisations
+
+#### - AWS Organizations
+
+    - Permet de contrôler de manière centralisée les autorisations pour les comptes de votre organisation à l'aide
+      de politiques de contrôle des services (SCP -> imposer des restrictions sur les services AWS). 
+    - Regrouper des comptes en unités d'organisation (UO) pour faciliter la gestion des comptes ayant des exigences 
+      commerciales ou de sécurité similaires.
