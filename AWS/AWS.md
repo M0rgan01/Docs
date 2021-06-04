@@ -265,7 +265,7 @@ le système doit charger les 80 gigaoctets, la totalité, à chaque fois.
     - Regrouper des comptes en unités d'organisation (UO) pour faciliter la gestion des comptes ayant des exigences 
       commerciales ou de sécurité similaires.
       
-# Monitoring
+# MONITORING
 
 #### - Amazon CloudWatch
 
@@ -291,7 +291,7 @@ le système doit charger les 80 gigaoctets, la totalité, à chaque fois.
         - Tolérance aux pannes
         - Limites de service
 
-# Tarification
+# TARIFICATION
 
 #### - AWS Cost Explorer
 
