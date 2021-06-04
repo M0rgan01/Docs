@@ -264,3 +264,45 @@ le système doit charger les 80 gigaoctets, la totalité, à chaque fois.
       de politiques de contrôle des services (SCP -> imposer des restrictions sur les services AWS). 
     - Regrouper des comptes en unités d'organisation (UO) pour faciliter la gestion des comptes ayant des exigences 
       commerciales ou de sécurité similaires.
+      
+# Monitoring
+
+#### - Amazon CloudWatch
+
+    - Service web qui vous permet de surveiller et de gérer diverses métriques
+    - Permet de configurer des actions d'alarme en fonction des données de ces métriques
+
+#### - Amazon CloudTrail
+
+    - Enregistre les appels d'API de votre compte AWS ->
+        - Identité de l'utilisateur à l'origine de l'appel d'API
+        - Heure de l'appel d'API
+        - Adresse IP
+        - ect..
+
+#### - AWS Trusted Advisor
+
+    - Inspecte votre environnement AWS et fournit des recommandations en temps réel, conformément 
+      aux bonnes pratiques AWS.
+    - Les cinq catégories de bonnes pratiques :
+        - Optimisation des coûts
+        - Performances
+        - Sécurité
+        - Tolérance aux pannes
+        - Limites de service
+
+# Tarification
+
+#### - AWS Cost Explorer
+
+    - Permet de visualiser, de comprendre et de gérer vos coûts et votre utilisation AWS au fil du temps.
+
+> ##### Budgets AWS
+>
+> Dans Budgets AWS, vous pouvez créer des budgets pour planifier l'utilisation de vos services, 
+les coûts des services et les réservations d'instances.
+Les informations dans les Budgets AWS sont mises à jour trois fois par jour. 
+Cela vous permet de déterminer avec précision votre utilisation par rapport 
+aux montants prévus au budget ou aux limites de l'offre gratuite d'AWS.
+Dans Budgets AWS, vous pouvez également définir des alertes personnalisées 
+lorsque votre utilisation dépasse (ou va dépasser) le montant prévu au budget.
