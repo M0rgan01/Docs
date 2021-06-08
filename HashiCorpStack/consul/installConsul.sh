@@ -12,6 +12,6 @@ chmod -R 775 /var/lib/consul
 mkdir /etc/consul.d
 chown -R consul:consul /etc/consul.d
 
-consul agent -server -data-dir=/var/lib/consul -config-dir=/etc/consul.d -ui -bind=127.0.0.1
+consul agent -server -data-dir=/var/lib/consul -config-dir=/etc/consul.d -ui -bind=127.0.0.1 -bootstrap-expect=1
 
 ##################################################################
