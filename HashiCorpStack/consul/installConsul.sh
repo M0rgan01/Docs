@@ -1,8 +1,10 @@
 
-################# installation server consul  ###########################
+CONSUL_VERSION=1.9.6
 
-wget --no-check-certificate https://releases.hashicorp.com/consul/1.9.6/consul_1.9.6_linux_amd64.zip
-unzip consul_1.9.6_linux_amd64.zip
+################# installation consul  ###########################
+
+wget --no-check-certificate https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip
+unzip consul_${CONSUL_VERSION}_linux_amd64.zip
 mv consul /usr/local/bin/
 groupadd --system consul
 useradd -s /sbin/nologin --system -g consul consul

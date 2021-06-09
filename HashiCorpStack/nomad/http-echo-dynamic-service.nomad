@@ -10,7 +10,7 @@ job "http-echo" {
         image = "hashicorp/http-echo:latest"
         args = [
           "-listen", ":${NOMAD_PORT_http}",
-          "-text", "Hello and welcome to 127.0.0.1 running on port ${NOMAD_PORT_http}",
+          "-text", "Hello and welcome to ${NOMAD_IP_http} running on port ${NOMAD_PORT_http}",
         ]
       }
 
