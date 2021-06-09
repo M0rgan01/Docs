@@ -1,7 +1,7 @@
 # Reproduction du schéma
 
 <p align="center">
-    <img src="./consulEx.png"
+    <img src="ConsulEx.png"
     alt="consulEx"
     width="50%"
     />
