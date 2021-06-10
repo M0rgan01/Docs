@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN echo 'deb http://deb.debian.org/debian stretch-backports main' >> /etc/apt/sources.list
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends systemd python sudo bash iproute net-tools openssh-server openssh-client vim bash wget unzip \
+    && apt-get install -y --no-install-recommends systemd python python-flask sudo bash iproute net-tools openssh-server openssh-client vim bash wget unzip \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PermitRootLogin/PermitRootLogin/' /etc/ssh/sshd_config
