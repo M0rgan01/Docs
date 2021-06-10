@@ -9,8 +9,6 @@
 
 ## Les commandes
 
-Contexte -> folder [HashiCorpStack](../)
-
 ```
 ./docker-debian.sh --create 4
 ```
@@ -18,11 +16,11 @@ Contexte -> folder [HashiCorpStack](../)
 ### Server
 
 ```
-docker cp consul/installConsul.sh $USER-debian-1:/tmp
+docker cp installConsul.sh $USER-debian-1:/tmp
 ```
 
 ```
-docker cp consul/execConsulServer.sh $USER-debian-1:/tmp
+docker cp execConsulServer.sh $USER-debian-1:/tmp
 ```
 
 ```
@@ -36,11 +34,11 @@ cd /tmp/ && chmod 755 installConsul.sh && ./installConsul.sh && ./execConsulServ
 ### Clients
 
 ```
-docker cp consul/installConsul.sh $USER-debian-2:/tmp
+docker cp installConsul.sh $USER-debian-2:/tmp
 ```
 
 ```
-docker cp consul/execConsulClient.sh $USER-debian-2:/tmp
+docker cp execConsulClient.sh $USER-debian-2:/tmp
 ```
 
 ```

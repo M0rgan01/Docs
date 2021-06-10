@@ -35,10 +35,6 @@ CONSUL_VERSION=1.9.0
 curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip > consul.zip
 unzip consul.zip
 sudo mv consul /usr/local/bin/
-sudo groupadd --system consul
-sudo useradd -s /sbin/nologin --system -g consul consul
 sudo mkdir -p /var/lib/consul
-sudo chown -R consul:consul /var/lib/consul
 sudo chmod -R 775 /var/lib/consul
 sudo mkdir /etc/consul.d
-sudo chown -R consul:consul /etc/consul.d
