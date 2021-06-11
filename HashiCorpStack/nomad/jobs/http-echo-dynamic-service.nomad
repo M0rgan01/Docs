@@ -2,7 +2,7 @@ job "http-echo" {
   datacenters = ["dc1"]
 
   group "echo" {
-    count = 5
+    count = 3
     task "server" {
       driver = "docker"
 
@@ -27,7 +27,7 @@ job "http-echo" {
 
         tags = [
           "traefik.enable=true",
-          "traefik.http.routers.http.rule=Host(`test.localhost`) && Path(`/myapp`)",
+          "traefik.http.routers.http.rule=Path(`/myapp`)",
         ]
 
         check {

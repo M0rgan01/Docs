@@ -16,6 +16,7 @@ ExecStart=/usr/local/bin/nomad agent \
   -node=$IP \
   -bind=$IP \
   -client \
+  -network-interface=eth1 \
   -data-dir=/var/lib/nomad \
   -retry-join=$SERVER_IP \
   -encrypt=TeLbPpWX41zMM3vfLwHHfQ==

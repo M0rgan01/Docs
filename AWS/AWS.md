@@ -13,9 +13,9 @@
 
     Type de tarification:
         - à la demande
-        - "Savings Plan Amazon EC2"
+        - Savings Plan
         - instances réservées
-        - instance Stot
+        - instance spot
         - Hôtes dédiés
 
     Type de mise à l'échelle (Auto Scaling Amazon EC2):
