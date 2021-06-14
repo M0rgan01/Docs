@@ -13,7 +13,9 @@ Wants=network-online.target
 ExecStart=/usr/local/bin/nomad agent \
   -node=$IP \
   -bind=$IP \
-  -dev \
+  -config=/home/vagrant/temp/nomadConf.hcl \
+  -network-interface=eth1 \
+  -dev
 
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure

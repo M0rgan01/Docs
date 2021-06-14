@@ -20,6 +20,9 @@ sudo docker --version
 # Packages required for nomad & consul
 sudo apt-get install unzip curl vim -y
 
+# Create nomad volumes directory
+sudo mkdir -p $HOME/volumes/postgres
+
 echo "Installing Nomad..."
 NOMAD_VERSION=1.0.1
 cd /tmp/
