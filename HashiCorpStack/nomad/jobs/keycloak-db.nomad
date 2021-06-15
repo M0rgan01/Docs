@@ -3,6 +3,14 @@ job "keycloak-db" {
 
   group "keycloak-db" {
     count = 1
+
+    network {
+      port "keycloak-db" {
+        to = 5432
+        static = 5432
+      }
+    }
+
     task "keycloak-db" {
       driver = "docker"
 
@@ -14,26 +22,17 @@ job "keycloak-db" {
 
       config {
         image = "postgres"
-
-        port_map {
-          db = 5432
-        }
+        ports = ["keycloak-db"]
       }
 
       resources {
         cpu = 300
         memory = 300
-
-        network {
-          port "db" {
-            static = 5432
-          }
-        }
       }
 
       service {
-        name = "keycloak-db"
-        port = "db"
+        name = "${TASKGROUP}"
+        port = "keycloak-db"
 
         check {
           type = "tcp"

@@ -63,7 +63,7 @@ EOF
 
 
     service {
-      name = "traefik"
+      name = "${TASKGROUP}"
 
       check {
         name     = "alive"

@@ -1,33 +1,23 @@
-job "keycloak" {
+job "park-trip-keycloak" {
   datacenters = ["dc1"]
   type = "service"
-  group "keycloak" {
+  group "park-trip-keycloak" {
     count = 1
-
-    restart {
-      // nombre max de restart
-      attempts = 5
-      // attente pour le redémarrage d'une tache
-      delay    = "15s"
-      interval = "30m"
-      mode     = "fail"
-    }
 
     network {
       port "keycloak-http" {
         to = 8080
-        static = 8080
       }
     }
 
-    task "keycloak" {
+    task "park-trip-keycloak" {
       driver = "docker"
 
       env {
         DB_VENDOR = "POSTGRES"
         DB_ADDR = "172.16.0.2"
         DB_DATABASE = "keycloak"
-        DB_USER = "keycloak"
+        DB_USER = "admin"
         DB_PASSWORD = "password"
         KEYCLOAK_USER = "admin"
         KEYCLOAK_PASSWORD = "admin"
@@ -36,13 +26,18 @@ job "keycloak" {
       }
 
       config {
-        image = "jboss/keycloak:12.0.1"
+        image = "ghcr.io/m0rgan01/park-trip-authentification:master"
         ports = ["keycloak-http"]
+        auth {
+          username = "M0rgan01"
+          password = ""
+        }
+
       }
 
       resources {
-        cpu = 600
-        memory = 600
+        cpu = 400
+        memory = 500
       }
 
       service {
