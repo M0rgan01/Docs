@@ -41,3 +41,7 @@ sudo mv consul /usr/local/bin/
 sudo mkdir -p /var/lib/consul
 sudo chmod -R 775 /var/lib/consul
 sudo mkdir /etc/consul.d
+
+echo "Installing Hey..."
+sudo apt-get update
+sudo apt-get install -y hey

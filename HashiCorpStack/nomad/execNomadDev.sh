@@ -14,7 +14,7 @@ ExecStart=/usr/local/bin/nomad agent \
   -node=$IP \
   -bind=$IP \
   -config=/home/vagrant/temp/nomadConf.hcl \
-  -network-interface=eth1 \
+  -network-interface=enp0s8 \
   -dev
 
 ExecReload=/bin/kill -HUP $MAINPID

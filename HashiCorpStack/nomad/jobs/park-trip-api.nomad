@@ -33,7 +33,7 @@ job "park-trip-api" {
 
       resources {
         cpu = 400
-        memory = 400
+        memory = 500
       }
 
       service {
