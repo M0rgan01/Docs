@@ -37,7 +37,7 @@ job "park-trip-keycloak" {
 
       resources {
         cpu = 400
-        memory = 500
+        memory = 600
       }
 
       service {

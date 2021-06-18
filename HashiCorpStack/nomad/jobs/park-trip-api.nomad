@@ -1,6 +1,8 @@
 job "park-trip-api" {
+
   datacenters = ["dc1"]
   type = "service"
+
   group "park-trip-api" {
     count = 1
 

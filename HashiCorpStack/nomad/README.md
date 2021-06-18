@@ -58,6 +58,14 @@ $ Vagrant up
 $ Vagrant up
 ```
 
+## Ajuster l'adresse de la CLI
+
+Par défaut la cli Nomad pointe sur localhost (127.0.0.1), pour modifier cette valeur, éxecuter la commande suivante
+
+```
+$ export NOMAD_ADDR=http://172.16.0.2:4646
+```
+
 ## Access Control List (ACL)
 
 Ajouter la stanza suivante dans la configuration du serveur / client pour permettre l'initialisation des acl
