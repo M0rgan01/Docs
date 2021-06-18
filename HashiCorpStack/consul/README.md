@@ -1,4 +1,6 @@
-# Reproduction du schéma
+# Consul
+
+## Reproduction du schéma
 
 <p align="center">
     <img src="ConsulEx.png"
@@ -7,13 +9,15 @@
     />
 </p>
 
-## Les commandes
+### Les commandes
+
+Mise en place de l'infrastructure avec la commande suivante :
 
 ```
 ./docker-debian.sh --create 4
 ```
 
-### Server
+#### Server
 
 ```
 docker cp installConsul.sh $USER-debian-1:/tmp
@@ -31,7 +35,7 @@ ssh root@172.17.0.2
 cd /tmp/ && chmod 755 installConsul.sh && ./installConsul.sh && ./execConsulServer.sh
 ```
 
-### Clients
+#### Clients
 
 ```
 docker cp installConsul.sh $USER-debian-2:/tmp
