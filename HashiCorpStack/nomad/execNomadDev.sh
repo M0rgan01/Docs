@@ -1,7 +1,7 @@
 
 DEFAULT_IP=172.17.0.2
 
-IP="${1:-$DEFAULT_IP}"
+NOMAD_IP="${1:-$DEFAULT_IP}"
 
 echo "[Unit]
 Description=Nomad Service Discovery Agent
@@ -11,11 +11,9 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/nomad agent \
-  -node=$IP \
-  -bind=$IP \
   -config=/home/vagrant/temp/nomadConf.hcl \
-  -network-interface=enp0s8 \
-  -dev
+  -node=$NOMAD_IP \
+  -bind=$NOMAD_IP
 
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
@@ -25,3 +23,6 @@ WantedBy=multi-user.target" > /etc/systemd/system/nomad.service
 
 systemctl enable nomad.service
 systemctl start nomad
+
+
+# export NOMAD_ADDR=http://${NOMAD_IP}:4646
