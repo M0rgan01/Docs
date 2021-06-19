@@ -1,5 +1,9 @@
 # Nomad
 
+## Job stanza helper
+
+Le fichier [jobHelper.nomad](./jobs/jobHelper.nomad) comporte des commentaires pour aider à la compréhension de certaines stanza
+
 ## Mise en place d'un cluster consul / nomad
 
 <p align="center">
