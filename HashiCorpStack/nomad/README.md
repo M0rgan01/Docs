@@ -72,7 +72,7 @@ $ export NOMAD_ADDR=http://172.16.0.2:4646
 
 ## Access Control List (ACL)
 
-Ajouter la stanza suivante dans la configuration du serveur / client pour permettre l'initialisation des acl
+Ajouter la stanza suivante dans la configuration du serveur / client pour l'initialisation des acl
 
 ```
 acl {
@@ -80,7 +80,7 @@ acl {
 }
 ```
 
-La commande suivante initialise les ACL. Le secret ID en retour de commande permet d'effectuer toutes les opérations.
+La commande suivante initialise les ACL et fournis le secret ID. Il permet d'effectuer toutes les opérations.
 Il doit être utilisé pour la création de nouveaux tokens et de policies
 
 ```
@@ -98,6 +98,16 @@ appliqué avec la commande suivante
 
 ```
 $ nomad acl policy apply -description "Anonymous policy (full-access)" anonymous anonymous.policy.hcl
+```
+
+Il existe 2 type de token : 
+- management -> donne toutes les permissions
+- client -> donne les permissions des policies attribuées
+
+Voiçi la commande de création d'un token client
+
+```
+$ nomad acl token create -name="client1" -global -policy="app1"
 ```
 
 ## Générateur de charge (Hey)

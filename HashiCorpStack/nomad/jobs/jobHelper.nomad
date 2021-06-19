@@ -1,6 +1,12 @@
+// https://www.nomadproject.io/docs/job-specification
+
 job "park-trip-api" {
 
   datacenters = ["dc1"]
+
+  // défini l'environnement par un namespace existant -> 'default' par défaut
+  // (nomad namespace list / nomad namespace apply -description "QA instances of webservers" web-qa)
+  namespace = "web-qa"
 
   // Il existe trois type de job
   // - BATCH -> Conçu pour des taches de courte durée, se terminant en quelques minutes à quelques jours.
@@ -19,14 +25,21 @@ job "park-trip-api" {
     time_zone = "America/New_York"
   }
 
+  // Politique de mise à jour du job
   update {
+    // nombre d'allocations au sein d'un groupe de tâches qui peuvent être mises à jour en même temps. défaut -> 1
     max_parallel = 3
+    // détermine la vérification, içi le check utilisé dans le service
     health_check = "checks"
     min_healthy_time = "10s"
     healthy_deadline = "5m"
     progress_deadline = "10m"
+    // revient à l'ancienne version si le déploiement à échoué, false par défaut
     auto_revert = true
+    // spécifie si un déploiement canary réussi (par vérification health_check) doit
+    // promouvoir les autres automatiquement, false par défaut
     auto_promote = true
+    // permet d'avoir des allocations de 'test' sur une partie de celles en cours
     canary = 1
     stagger = "30s"
   }
@@ -95,10 +108,22 @@ job "park-trip-api" {
         image = "ghcr.io/m0rgan01/park-trip/park-trip-api:master"
         // utilisation des stratégies de ports ciblées dans la partie network
         ports = ["api-http"]
+        // commande par défaut
+        command = "my-command"
+        // arguments de la commande exécutée
+        args = [
+          "-bind", "${NOMAD_PORT_http}",
+          "${nomad.datacenter}",
+          "${MY_ENV}",
+          "${meta.foo}",
+        ]
         auth {
           username = "M0rgan01"
           password = ""
         }
+        volumes = [
+          "host:container",
+        ]
       }
 
       // ressource max de la tache
