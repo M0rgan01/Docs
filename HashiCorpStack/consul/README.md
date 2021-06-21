@@ -58,3 +58,28 @@ cd /tmp/ && chmod 755 installConsul.sh && ./installConsul.sh 172.17.0.3 && ./exe
 ```
 dig @172.17.0.2 -p 8600 ${service}.service.consul SRV +short
 ```
+
+## Access Control List (ACL)
+
+Ajouter la stanza suivante dans la configuration du serveur / client pour l'initialisation des acl
+
+```
+acl = {
+  enabled = true
+  default_policy = "deny"
+  enable_token_persistence = true
+}
+```
+
+La commande suivante initialise les ACL et fournis le secret ID. Il permet d'effectuer toutes les opérations.
+Il doit être utilisé pour la création de nouveaux tokens et de policies
+
+```
+$ consul acl bootstrap
+```
+
+Pour effectuer des opérations avec la CLI il faut exporter la variable d'environnement CONSUL_HTTP_TOKEN
+
+```
+$ export CONSUL_HTTP_TOKEN="BOOTSTRAP_SECRET_ID"
+```
