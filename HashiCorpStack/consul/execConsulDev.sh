@@ -14,7 +14,7 @@ ExecStart=/usr/local/bin/consul agent \
   -node=$CONSUL_IP \
   -bind=$CONSUL_IP \
   -client=$CONSUL_IP \
-  -config-file=devConfig.hcl \
+  -config-file=/home/vagrant/temp/consulDevConfig.hcl \
   -dev
 
 ExecReload=/bin/kill -HUP $MAINPID

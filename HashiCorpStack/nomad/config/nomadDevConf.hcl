@@ -19,3 +19,7 @@ server {
 acl {
   enabled = true
 }
+
+consul {
+  token = "token"
+}

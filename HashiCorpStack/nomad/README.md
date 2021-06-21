@@ -98,7 +98,7 @@ $ export NOMAD_TOKEN="BOOTSTRAP_SECRET_ID"
 
 Le fichier [anonymous.policy](./policies/anonymous.policy.hcl) permet de configurer des policies de type anonyme, 
 utilisé pour permettre l'accès temporaire à l'API nomad en attendant de mettre en place d'autre policies et 
-des tokens. La commande suivante applique des commandes de type anonyme :
+des tokens. La commande suivante applique des policies de type anonyme :
 
 ```
 $ nomad acl policy apply -description "Anonymous policy (full-access)" anonymous ./policies/anonymous.policy.hcl
