@@ -1,7 +1,7 @@
 
-DEFAULT_IP=172.17.0.3
+DEFAULT_IP=172.17.0.2
 
-IP="${1:-$DEFAULT_IP}"
+CONSUL_IP="${1:-$DEFAULT_IP}"
 
 echo "[Unit]
 Description=Consul Service Discovery Agent
@@ -11,10 +11,9 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/consul agent \
-  -node=$IP \
-  -bind=$IP \
-  -client=0.0.0.0 \
-  -advertise=$IP \
+  -node=$CONSUL_IP \
+  -bind=$CONSUL_IP \
+  -client=$CONSUL_IP \
   -dev
 
 ExecReload=/bin/kill -HUP $MAINPID

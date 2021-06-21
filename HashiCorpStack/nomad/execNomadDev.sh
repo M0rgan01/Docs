@@ -13,6 +13,7 @@ Wants=network-online.target
 ExecStart=/usr/local/bin/nomad agent \
   -config=/home/vagrant/temp/nomadConf.hcl \
   -node=$NOMAD_IP \
+  -dev \
   -bind=$NOMAD_IP
 
 ExecReload=/bin/kill -HUP $MAINPID
@@ -23,6 +24,3 @@ WantedBy=multi-user.target" > /etc/systemd/system/nomad.service
 
 systemctl enable nomad.service
 systemctl start nomad
-
-
-# export NOMAD_ADDR=http://${NOMAD_IP}:4646
