@@ -1,9 +1,12 @@
 # Nomad
 
-## Job stanza helper
+## Helpers
 
-Le fichier [jobHelper.nomad](./jobs/jobHelper.nomad) comporte des commentaires pour aider à la compréhension de certaines stanza
-
+- Le fichier [jobHelper.nomad](./jobs/jobHelper.nomad) comporte des commentaires pour aider 
+  à la compréhension de certaines stanza des jobs
+- Le fichier [helper.policy.hcl](./policies/helper.policy.hcl) comporte des commentaires pour 
+  aider à la compréhension de certaines stanza des policies
+  
 ## Mise en place d'un cluster consul / nomad
 
 <p align="center">
@@ -93,11 +96,12 @@ Pour effectuer des opérations avec la CLI il faut exporter la variable d'enviro
 $ export NOMAD_TOKEN="BOOTSTRAP_SECRET_ID"
 ```
 
-Le fichier [anonymous.policy](./anonymous.policy) permet de configurer des policies, qui peuvent être 
-appliqué avec la commande suivante
+Le fichier [anonymous.policy](./policies/anonymous.policy.hcl) permet de configurer des policies de type anonyme, 
+utilisé pour permettre l'accès temporaire à l'API nomad en attendant de mettre en place d'autre policies et 
+des tokens. La commande suivante applique des commandes de type anonyme :
 
 ```
-$ nomad acl policy apply -description "Anonymous policy (full-access)" anonymous anonymous.policy.hcl
+$ nomad acl policy apply -description "Anonymous policy (full-access)" anonymous ./policies/anonymous.policy.hcl
 ```
 
 Il existe 2 type de token : 
