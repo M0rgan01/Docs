@@ -5,7 +5,7 @@ NOMAD_IP="${1:-$DEFAULT_IP}"
 
 echo "[Unit]
 Description=Nomad Service Discovery Agent
-Documentation=https://www.nomad.io/
+Documentation=https://www.nomadproject.io/
 After=network-online.target
 Wants=network-online.target
 

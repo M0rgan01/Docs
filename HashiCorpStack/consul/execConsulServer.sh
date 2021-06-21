@@ -14,11 +14,9 @@ Restart=on-failure
 ExecStart=/usr/local/bin/consul agent \
   -node=$IP \
   -bind=$IP \
-  -client=0.0.0.0 \
   -ui \
   -server \
   -bootstrap-expect=1 \
-  -advertise=$IP \
   -data-dir=/var/lib/consul \
   -encrypt=TeLbPpWX41zMM3vfLwHHfQ==
 

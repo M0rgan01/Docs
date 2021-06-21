@@ -15,8 +15,6 @@ Wants=network-online.target
 ExecStart=/usr/local/bin/consul agent \
   -node=$IP \
   -bind=$IP \
-  -client=0.0.0.0 \
-  -advertise=$IP \
   -data-dir=/var/lib/consul \
   -retry-join=$SERVER_IP \
   -encrypt=TeLbPpWX41zMM3vfLwHHfQ==
