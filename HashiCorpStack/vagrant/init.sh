@@ -42,6 +42,16 @@ sudo mkdir -p /var/lib/consul
 sudo chmod -R 775 /var/lib/consul
 sudo mkdir /etc/consul.d
 
+
+echo "Installing Vault..."
+VAULT_VERSION=1.7.3
+curl -sSL https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip -o vault.zip
+unzip vault.zip
+sudo mv vault /usr/local/bin/
+sudo mkdir -p /etc/vault.d
+sudo chmod a+w /etc/vault.d
+
+
 echo "Installing Hey..."
 sudo apt-get update
 sudo apt-get install -y hey
