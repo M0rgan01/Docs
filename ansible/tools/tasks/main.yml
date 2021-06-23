@@ -1,0 +1,11 @@
+---
+# tasks file for tools
+
+- name: TOOLS | git + vim + curl
+  apt:
+    name:
+      - git
+      - vim
+      - curl
+      - python3-pip
+    state: present
