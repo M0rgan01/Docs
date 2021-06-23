@@ -2,6 +2,16 @@
 
 ## Installation
 
+Les commandes pour l'installation d'ansible.
+
+***Prérequis serveur**
+
+Les serveurs cibles doivent avoir installés python3
+
+```
+$ sudo apt install python3
+```
+
 ### Pip 
 
 ```

@@ -7,18 +7,18 @@
 - Le fichier [helper.policy.hcl](./policies/helper.policy.hcl) comporte des commentaires pour 
   aider à la compréhension de certaines stanza des policies
   
-## Mise en place d'un cluster consul / nomad
+## Mise en place d'un cluster consul / nomad à 4 noeuds
 
 <p align="center">
-    <img src="nomadConsulCluster.png"
-    alt="nomadConsulCluster"
+    <img src="nomadConsul4NodesCluster.png"
+    alt="nomadConsul4NodesCluster"
     width="50%"
     />
 </p>
 
 *Nécessite [Vagrant](https://www.vagrantup.com/downloads)
 <br />
-*Contexte [vagrant multi-vm](../vagrant/multi-vm)
+*Contexte [vagrant 4-nodes-vm](../vagrant/4-nodes-vm)
 
 **Config**
 
@@ -32,8 +32,42 @@
   - [Serveur service](../consul/execConsulServer.sh)
 - Vagrant
   - [Script initialisation](../vagrant/init.sh)
-  - [Vagrantfile](../vagrant/multi-vm/Vagrantfile)
+  - [Vagrantfile](../vagrant/4-nodes-vm/Vagrantfile)
   
+**Commande**
+
+```
+$ Vagrant up
+```
+
+## Mise en place d'un cluster consul / nomad à 3 noeuds
+
+<p align="center">
+    <img src="nomadConsul3NodesCluster.png"
+    alt="nomadConsul3NodesCluster"
+    width="50%"
+    />
+</p>
+
+
+*Nécessite [Vagrant](https://www.vagrantup.com/downloads)
+<br />
+*Contexte [vagrant 4-nodes-vm](../vagrant/4-nodes-vm)
+
+**Config**
+
+- Nomad
+  - [Install](./installNomad.sh)
+  - [nomad service](./execNomadClientServer.sh)
+  - [nomad conf](./config/nomadClientServerConfig.hcl)
+- Consul
+  - [Install](../consul/installConsul.sh)
+  - [consul service](../consul/execConsulClientServer.sh)
+  - [consul conf](../consul/config/consulClientServerConfig.hcl)
+- Vagrant
+  - [Script initialisation](../vagrant/init.sh)
+  - [Vagrantfile](../vagrant/3-nodes-vm/Vagrantfile)
+
 **Commande**
 
 ```
@@ -51,10 +85,11 @@ $ Vagrant up
 - Nomad
   - [Install](./installNomad.sh)
   - [nomad service](./execNomadDev.sh)
-  - [nomad conf](./nomadConf.hcl)
+  - [nomad conf](./config/nomadDevConfig.hcl)
 - Consul
   - [Install](../consul/installConsul.sh)
   - [consul service](../consul/execConsulDev.sh)
+  - [consul conf](../consul/config/consulDevConfig.hcl)
 - Vagrant
   - [Script initialisation](../vagrant/init.sh)
   - [Vagrantfile](../vagrant/dev-vm/Vagrantfile)

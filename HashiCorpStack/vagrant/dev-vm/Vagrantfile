@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
   config.vm.network :private_network, ip: "172.16.0.2"
 
   config.vm.provision "file", source: "../../consul/config/consulDevConfig.hcl", destination: "$HOME/temp/consulDevConfig.hcl"
-  config.vm.provision "file", source: "../../nomad/config/nomadDevConf.hcl", destination: "$HOME/temp/nomadDevConf.hcl"
+  config.vm.provision "file", source: "../../nomad/config/nomadDevConfig.hcl", destination: "$HOME/temp/nomadDevConfig.hcl"
   config.vm.provision "file", source: "../../vault/vaultConf.hcl", destination: "$HOME/temp/vaultConf.hcl"
 
   config.vm.provision "shell", path: "../init.sh", privileged: false

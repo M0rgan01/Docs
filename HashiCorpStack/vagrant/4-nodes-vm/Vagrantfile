@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
   servers=[
     {
       :hostname => "Server1",
-      :box => "bento/ubuntu-18.04",
+      :box => "ubuntu/focal64",
       :ip => "172.16.0.2",
       :ssh_port => '2200',
       :nomad_server => true,
@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     },
     {
       :hostname => "Server2",
-      :box => "bento/ubuntu-18.04",
+      :box => "ubuntu/focal64",
       :ip => "172.16.0.3",
       :ssh_port => '2201',
       :nomad_server => false,
@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
     },
     {
       :hostname => "Server3",
-      :box => "bento/ubuntu-18.04",
+      :box => "ubuntu/focal64",
       :ip => "172.16.0.4",
       :ssh_port => '2202',
       :nomad_server => false,
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
     },
     {
       :hostname => "Server4",
-      :box => "bento/ubuntu-18.04",
+      :box => "ubuntu/focal64",
       :ip => "172.16.0.5",
       :ssh_port => '2203',
       :nomad_server => false,

@@ -14,11 +14,8 @@ Restart=on-failure
 ExecStart=/usr/local/bin/consul agent \
   -node=$CONSUL_IP \
   -bind=$CONSUL_IP \
-  -ui \
-  -server \
-  -bootstrap-expect=1 \
-  -data-dir=/var/lib/consul \
-  -encrypt=TeLbPpWX41zMM3vfLwHHfQ==
+  -client=$CONSUL_IP \
+  -config-file=/home/vagrant/temp/consulClientServerConfig.hcl
 
 ExecReload=/bin/kill -HUP $MAINPID
 
