@@ -52,7 +52,7 @@ $ Vagrant up
 
 *Nécessite [Vagrant](https://www.vagrantup.com/downloads)
 <br />
-*Contexte [vagrant 4-nodes-vm](../vagrant/4-nodes-vm)
+*Contexte [vagrant 3-nodes-vm](../vagrant/3-nodes-vm)
 
 **Config**
 

@@ -1,57 +1,8 @@
 # Consul
 
-## Reproduction du schéma
+## Mise en place d'un cluster / d'une instance
 
-<p align="center">
-    <img src="ConsulEx.png"
-    alt="consulEx"
-    width="50%"
-    />
-</p>
-
-### Les commandes
-
-Mise en place de l'infrastructure avec la commande suivante :
-
-```
-./docker-debian.sh --create 4
-```
-
-#### Server
-
-```
-docker cp installConsul.sh $USER-debian-1:/tmp
-```
-
-```
-docker cp execConsulServer.sh $USER-debian-1:/tmp
-```
-
-```
-ssh root@172.17.0.2
-```
-
-```
-cd /tmp/ && chmod 755 installConsul.sh && ./installConsul.sh && ./execConsulServer.sh
-```
-
-#### Clients
-
-```
-docker cp installConsul.sh $USER-debian-2:/tmp
-```
-
-```
-docker cp execConsulClient.sh $USER-debian-2:/tmp
-```
-
-```
-ssh root@172.17.0.3
-```
-
-```
-cd /tmp/ && chmod 755 installConsul.sh && ./installConsul.sh 172.17.0.3 && ./execConsulClient.sh 172.17.0.3 172.17.0.2
-```
+Voir [le README nomad](../nomad/README.md)
 
 ### DNS tests
 
