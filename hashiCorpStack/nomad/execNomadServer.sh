@@ -13,10 +13,8 @@ Wants=network-online.target
 ExecStart=/usr/local/bin/nomad agent \
   -node=$NOMAD_IP \
   -bind=$NOMAD_IP \
-  -server \
-  -bootstrap-expect=1 \
-  -data-dir=/var/lib/nomad \
-  -encrypt=TeLbPpWX41zMM3vfLwHHfQ==
+  -consul-address=$NOMAD_IP:8500 \
+  -config=/home/vagrant/temp/nomadServerConfig.hcl
 
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure

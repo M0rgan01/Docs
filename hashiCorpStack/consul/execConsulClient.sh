@@ -1,9 +1,6 @@
-
-DEFAULT_SERVER_IP=172.17.0.2
-DEFAULT_IP=172.17.0.3
+DEFAULT_IP=172.16.0.2
 
 CONSUL_IP="${1:-$DEFAULT_IP}"
-CONSUL_SERVER_IP="${2:-DEFAULT_SERVER_IP}"
 
 echo "[Unit]
 Description=Consul Service Discovery Agent
@@ -15,9 +12,8 @@ Wants=network-online.target
 ExecStart=/usr/local/bin/consul agent \
   -node=$CONSUL_IP \
   -bind=$CONSUL_IP \
-  -data-dir=/var/lib/consul \
-  -retry-join=$CONSUL_SERVER_IP \
-  -encrypt=TeLbPpWX41zMM3vfLwHHfQ==
+  -client=$CONSUL_IP \
+  -config-file=/home/vagrant/temp/consulClientConfig.hcl
 
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
