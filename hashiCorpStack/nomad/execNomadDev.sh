@@ -11,7 +11,7 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/nomad agent \
-  -config=/home/vagrant/temp/nomadDevConf.hcl \
+  -config=/home/vagrant/temp/nomadDevConfig.hcl \
   -node=$NOMAD_IP \
   -dev \
   -bind=$NOMAD_IP

@@ -29,8 +29,9 @@ cd /tmp/
 curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip -o nomad.zip
 unzip nomad.zip
 sudo mv nomad /usr/local/bin/
-sudo mkdir -p /etc/nomad.d
-sudo chmod a+w /etc/nomad.d
+# config directory
+sudo mkdir -p /home/vagrant/etc/nomad.d
+sudo chmod a+w /home/vagrant/etc/nomad.d
 
 
 echo "Installing Consul..."
@@ -40,16 +41,18 @@ unzip consul.zip
 sudo mv consul /usr/local/bin/
 sudo mkdir -p /var/lib/consul
 sudo chmod -R 775 /var/lib/consul
-sudo mkdir /etc/consul.d
-
+# config directory
+sudo mkdir -p /home/vagrant/etc/consul.d
+sudo chmod a+w /home/vagrant/etc/consul.d
 
 echo "Installing Vault..."
 VAULT_VERSION=1.7.3
 curl -sSL https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip -o vault.zip
 unzip vault.zip
 sudo mv vault /usr/local/bin/
-sudo mkdir -p /etc/vault.d
-sudo chmod a+w /etc/vault.d
+# config directory
+sudo mkdir -p /home/vagrant/etc/vault.d
+sudo chmod a+w /home/vagrant/etc/vault.d
 
 
 echo "Installing Hey..."
