@@ -144,13 +144,29 @@ job "park-trip-api" {
       // téléchargement d'artéfact
       artifact {
         source = "https://example.com/file.yml.tpl"
+        // destination (alloc/, local/, secrets/)
         destination = "local/file.yml.tpl"
       }
 
       // ajoute des données dans le répertoire du job
       template {
+        // possible fichier source
         source = "local/file.yml.tpl"
+
+        data = <<EOH
+        # içi la valeur "key" va chercher la valeur de la clé "service/geo-api/log-verbosity" dans consul
+        LOG_LEVEL="{{key "service/geo-api/log-verbosity"}}"
+        # içi la valeur "with secret" va chercher la valeur de la clé "secret/geo-api-key" dans vault
+        API_KEY="{{with secret "secret/geo-api-key"}}{{.Data.value}}{{end}}"
+        # içi la valeur "file" va cherche la valeur dans le fichier "path/to/cert.pem" et le convertir en json
+        CERT_PEM={{ file "path/to/cert.pem" | toJSON }}
+        EOH
+
+        // destination (alloc/, local/, secrets/)
         destination = "local/file.yml"
+
+        // permet de définir si les données seront converties en variables d'env
+        env         = true
       }
 
       // consul service definition

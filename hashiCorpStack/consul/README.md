@@ -62,3 +62,16 @@ $ consul acl token create \
   -policy-name "nomad-client" | tee nomad-agent.token
 ```
 
+## Store clé / valeur
+
+La commande pour mettre en place une paire de clé/valeur
+
+```
+$ consul kv put {key} {value}
+```
+
+La commande pour supprimer une paire de clé/valeur
+
+```
+$ consul kv delete {key}
+```
