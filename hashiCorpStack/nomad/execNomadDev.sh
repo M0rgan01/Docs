@@ -1,5 +1,5 @@
 
-DEFAULT_IP=172.17.0.2
+DEFAULT_IP=172.16.0.2
 
 NOMAD_IP="${1:-$DEFAULT_IP}"
 
@@ -11,10 +11,11 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/nomad agent \
-  -config=/home/vagrant/temp/nomadDevConfig.hcl \
   -node=$NOMAD_IP \
+  -bind=$NOMAD_IP \
+  -consul-address=$NOMAD_IP:8500 \
   -dev \
-  -bind=$NOMAD_IP
+  -config=/home/vagrant/temp/nomadDevConfig.hcl
 
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
