@@ -11,8 +11,9 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/vault server \
-  -config=/home/vagrant/temp/vaultConf.hcl \
-  -dev
+  -config=/home/vagrant/etc/vault.d/vaultDevConf.hcl \
+  -dev \
+  -dev-root-token-id=SQQHkK672aXEoxmDJU5lSu7H
 
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure

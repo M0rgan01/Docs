@@ -1,4 +1,4 @@
-data_dir  = "/var/lib/nomad"
+data_dir = "/var/lib/nomad"
 
 client {
   enabled = true
@@ -21,4 +21,10 @@ acl {
 
 consul {
   token = "token"
+}
+
+vault {
+  enabled = true
+  address = "http://172.16.0.2:8200"
+  token = "SQQHkK672aXEoxmDJU5lSu7H"
 }

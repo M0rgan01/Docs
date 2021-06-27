@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "file", source: "../../consul/config/consulDevConfig.hcl", destination: "$HOME/etc/consul.d/consulDevConfig.hcl"
   config.vm.provision "file", source: "../../nomad/config/nomadDevConfig.hcl", destination: "$HOME/temp/nomadDevConfig.hcl"
-  config.vm.provision "file", source: "../../vault/vaultConf.hcl", destination: "$HOME/temp/vaultConf.hcl"
+  config.vm.provision "file", source: "../../vault/config/vaultDevConf.hcl", destination: "$HOME/etc/vault.d/vaultDevConf.hcl"
 
   config.vm.provision "shell" do |s|
     s.path = "../../consul/execConsulDev.sh"
@@ -18,12 +18,12 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "shell" do |s|
-    s.path = "../../nomad/execNomadDev.sh"
+    s.path = "../../vault/execVaultDev.sh"
     s.privileged = true
   end
 
   config.vm.provision "shell" do |s|
-    s.path = "../../vault/execVaultDev.sh"
+    s.path = "../../nomad/execNomadDev.sh"
     s.privileged = true
   end
 
