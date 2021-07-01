@@ -1,4 +1,4 @@
-ubuntu_version: focal
+---
 git_user: m0rgan01
 git_credential: !vault |
   $ANSIBLE_VAULT;1.1;AES256

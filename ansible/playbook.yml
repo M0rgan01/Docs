@@ -1,0 +1,12 @@
+---
+
+  # les hosts concernés par ce playbook
+- hosts: one_node
+  # utilisateur pour les actions
+  remote_user: root
+
+  # la commande pour inclure un role
+  roles:
+    - init
+    - dockerInstall
+    - consul

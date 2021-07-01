@@ -1,0 +1,12 @@
+---
+# tasks file for tools
+
+- name: Docker login
+  docker_login:
+    username: "{{ git_user }}"
+    password: "{{ git_credential }}"
+    registry: ghcr.io
+
+- name: Pull default Docker image
+  docker_image:
+    name: ghcr.io/m0rgan01/park-trip/park-trip-api:master

@@ -37,7 +37,7 @@ $ sudo apt install ansible
 Voiçi la commande pour lancer l'installation du serveur :
 
 ```
-$ ansible-playbook -i hosts install.yml
+$ ansible-playbook -i inventory playbook.yml
 ```
 
 La commande pour la création de rôles, qui permettent de moduler la configuration

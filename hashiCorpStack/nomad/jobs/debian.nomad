@@ -16,8 +16,7 @@ job "debian" {
       template {
 
         data = <<EOH
-        TEST_ENV="{{key "test-env"}}"
-        TEST_ENV_SECRET="{{with secret "secret/test-env"}}{{.Data.data.key}}{{end}}"
+        TEST_ENV_SECRET="{{with secret "secret/test"}}{{.Data.data.test}}{{end}}"
         EOH
 
         destination = "local/file.env"

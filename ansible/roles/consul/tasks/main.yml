@@ -1,0 +1,39 @@
+---
+
+- name: Creates conf directory
+  file:
+    path: /home/vagrant/temp
+    state: directory
+
+- name: Download binary
+  get_url:
+    url: https://releases.hashicorp.com/consul/{{consul_version}}/consul_{{consul_version}}_linux_amd64.zip
+    dest: /tmp/consul_{{consul_version}}_linux_amd64.zip
+    mode: 0755
+  # stock le résultat de l'opération dans une variable
+  register: consul_download
+
+- name: Unzip consul archive
+  unarchive:
+    src: "{{ consul_download.dest }}"
+    dest: /usr/local/bin
+    copy: no
+    mode: 0755
+
+- name: Config file
+  template:
+    src: consulClientServerConfig.hcl.j2
+    dest: /home/vagrant/temp/consulClientServerConfig.hcl
+
+- name: Service file
+  template:
+    src: consul.service.j2
+    dest: /etc/systemd/system/consul.service
+  # exécute le handler systemd_reload
+  notify: systemd_reload
+
+- name: Start consul service
+  service:
+    name: consul
+    state: started
+    enabled: yes

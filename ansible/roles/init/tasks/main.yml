@@ -1,0 +1,21 @@
+---
+# tasks file for tools
+
+- name: User | Création de {{ user }}
+  user:
+    name: "{{ user }}"
+    shell: /bin/bash
+
+- name: User | Mise en place clef SSH
+  authorized_key:
+    user: "{{ user }}"
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+# generic & abstracted module package
+- name: Install prerequisites
+  package:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items: "{{ tools }}"
+  become: yes

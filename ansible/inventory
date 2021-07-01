@@ -1,0 +1,15 @@
+[one_node]
+172.16.0.2
+
+[one_node:vars]
+bootstrap_expect=1
+retry_join=[]
+
+[cluster]
+172.16.0.2
+172.16.0.3
+172.16.0.4
+
+[cluster:vars]
+bootstrap_expect=3
+retry_join=["172.16.0.2", "172.16.0.3", "172.16.0.4"]
