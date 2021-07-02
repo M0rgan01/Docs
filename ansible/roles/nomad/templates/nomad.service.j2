@@ -1,0 +1,15 @@
+[Unit]
+Description=Nomad Service Discovery Agent
+Documentation=https://www.nomad.io/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/nomad agent \
+  -config=/etc/nomad.d/nomadClientServerConfig.hcl
+
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

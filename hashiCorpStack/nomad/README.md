@@ -18,7 +18,7 @@
 
 *Nécessite [Vagrant](https://www.vagrantup.com/downloads)
 <br />
-*Contexte [vagrant 4-nodes-vm](../vagrant/4-nodes-vm)
+*Contexte [vagrant 4-nodes-vm](../vagrant/hashicorp-dev-vm/4-nodes-vm)
 
 **Config**
 
@@ -31,8 +31,8 @@
   - [Client service](../consul/execConsulClient.sh)
   - [Serveur service](../consul/execConsulServer.sh)
 - Vagrant
-  - [Script initialisation](../vagrant/init.sh)
-  - [Vagrantfile](../vagrant/4-nodes-vm/Vagrantfile)
+  - [Script initialisation](../vagrant/hashicorp-dev-vm/init.sh)
+  - [Vagrantfile](../vagrant/hashicorp-dev-vm/4-nodes-vm/Vagrantfile)
   
 **Commande**
 
@@ -52,7 +52,7 @@ $ Vagrant up
 
 *Nécessite [Vagrant](https://www.vagrantup.com/downloads)
 <br />
-*Contexte [vagrant 3-nodes-vm](../vagrant/3-nodes-vm)
+*Contexte [vagrant 3-nodes-vm](../vagrant/hashicorp-dev-vm/3-nodes-vm)
 
 **Config**
 
@@ -65,8 +65,8 @@ $ Vagrant up
   - [consul service](../consul/execConsulClientServer.sh)
   - [consul conf](../consul/config/consulClientServerConfig.hcl)
 - Vagrant
-  - [Script initialisation](../vagrant/init.sh)
-  - [Vagrantfile](../vagrant/3-nodes-vm/Vagrantfile)
+  - [Script initialisation](../vagrant/hashicorp-dev-vm/init.sh)
+  - [Vagrantfile](../vagrant/hashicorp-dev-vm/3-nodes-vm/Vagrantfile)
 
 **Commande**
 
@@ -78,7 +78,7 @@ $ Vagrant up
 
 *Nécessite [Vagrant](https://www.vagrantup.com/downloads)
 <br />
-*Contexte [vagrant dev-vm](../vagrant/dev-vm)
+*Contexte [vagrant dev-vm](../vagrant/hashicorp-dev-vm/1-node-vm)
 
 **Config**
 
@@ -91,8 +91,8 @@ $ Vagrant up
   - [consul service](../consul/execConsulDev.sh)
   - [consul conf](../consul/config/consulDevConfig.hcl)
 - Vagrant
-  - [Script initialisation](../vagrant/init.sh)
-  - [Vagrantfile](../vagrant/dev-vm/Vagrantfile)
+  - [Script initialisation](../vagrant/hashicorp-dev-vm/init.sh)
+  - [Vagrantfile](../vagrant/hashicorp-dev-vm/1-node-vm/Vagrantfile)
   
 **Commande**
 

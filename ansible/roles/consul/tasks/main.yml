@@ -2,7 +2,7 @@
 
 - name: Creates conf directory
   file:
-    path: /home/vagrant/temp
+    path: /etc/consul.d
     state: directory
 
 - name: Download binary
@@ -23,14 +23,14 @@
 - name: Config file
   template:
     src: consulClientServerConfig.hcl.j2
-    dest: /home/vagrant/temp/consulClientServerConfig.hcl
+    dest: /etc/consul.d/consulClientServerConfig.hcl
 
 - name: Service file
   template:
     src: consul.service.j2
     dest: /etc/systemd/system/consul.service
   # exécute le handler systemd_reload
-  notify: systemd_reload
+  # notify: systemd_reload
 
 - name: Start consul service
   service:

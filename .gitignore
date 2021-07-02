@@ -1,5 +1,6 @@
-/hashiCorpStack/vagrant/4-nodes-vm/.vagrant/
-/hashiCorpStack/vagrant/3-nodes-vm/.vagrant/
-/hashiCorpStack/vagrant/dev-vm/.vagrant/
+/hashiCorpStack/vagrant/hashicorp-dev-vm/4-nodes-vm/.vagrant/
+/hashiCorpStack/vagrant/hashicorp-dev-vm/3-nodes-vm/.vagrant/
+/hashiCorpStack/vagrant/hashicorp-dev-vm/1-node-vm/.vagrant/
 /hashiCorpStack/vagrant/standard-vm/.vagrant/
 /.idea/
+*.log

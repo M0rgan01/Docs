@@ -1,0 +1,17 @@
+data_dir  = "/var/lib/nomad"
+bind_addr = "0.0.0.0"
+name = "{{ ansible_host }}"
+
+client {
+  enabled = true
+}
+
+server {
+  enabled = true
+  bootstrap_expect = {{ bootstrap_expect }}
+  encrypt = "{{ nomad_encrypt }}"
+  server_join {
+    retry_join = {{ retry_join }}
+  }
+}
+

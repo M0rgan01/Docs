@@ -1,0 +1,39 @@
+---
+
+- name: Creates conf directory
+  file:
+    path: /etc/nomad.d
+    state: directory
+
+- name: Download binary
+  get_url:
+    url: https://releases.hashicorp.com/nomad/{{nomad_version}}/nomad_{{nomad_version}}_linux_amd64.zip
+    dest: /tmp/nomad_{{nomad_version}}_linux_amd64.zip
+    mode: 0755
+  # stock le résultat de l'opération dans une variable
+  register: nomad_download
+
+- name: Unzip nomad archive
+  unarchive:
+    src: "{{ nomad_download.dest }}"
+    dest: /usr/local/bin
+    copy: no
+    mode: 0755
+
+- name: Config file
+  template:
+    src: nomadClientServerConfig.hcl.j2
+    dest: /etc/nomad.d/nomadClientServerConfig.hcl
+
+- name: Service file
+  template:
+    src: nomad.service.j2
+    dest: /etc/systemd/system/nomad.service
+  # exécute le handler systemd_reload
+  notify: systemd_reload
+
+- name: Start nomad service
+  service:
+    name: nomad
+    state: started
+    enabled: yes
