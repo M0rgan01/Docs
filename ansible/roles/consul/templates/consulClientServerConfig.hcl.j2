@@ -1,6 +1,6 @@
 data_dir = "/var/lib/consul"
-bind_addr = "0.0.0.0"
-client_addr = "0.0.0.0"
+bind_addr = "{{ ansible_host }}"
+client_addr = "{{ ansible_host }}"
 advertise_addr = "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
 node_name = "{{ ansible_host }}"
 server = true

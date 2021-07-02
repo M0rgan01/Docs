@@ -1,9 +1,8 @@
-[one_node]
+[singleNode]
 172.16.0.2
 
-[one_node:vars]
-bootstrap_expect=1
-retry_join=[]
+[singleNode:vars]
+une_variable_uniquement_sur_172.16.0.2=test
 
 [cluster]
 172.16.0.2
@@ -11,5 +10,4 @@ retry_join=[]
 172.16.0.4
 
 [cluster:vars]
-bootstrap_expect=3
-retry_join=["172.16.0.2", "172.16.0.3", "172.16.0.4"]
+une_variable_uniquement_sur_172.16.0.3_et_172.16.0.4=test2

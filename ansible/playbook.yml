@@ -1,11 +1,14 @@
 ---
 
-  # les hosts concernés par ce playbook
-- hosts: one_node
+# les hosts concernés par ce playbook
+- hosts: cluster
   # utilisateur pour les actions
   remote_user: root
 
-  # la commande pour inclure un role
+  vars:
+    bootstrap_expect: 3
+    retry_join: '[ "172.16.0.2", "172.16.0.3", "172.16.0.4" ]'
+
   roles:
     - init
     - dockerInstall
