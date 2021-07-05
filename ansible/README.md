@@ -34,11 +34,27 @@ $ sudo apt install ansible
 
 ## Commandes
 
+### Playbook
+
 Voiçi la commande pour lancer l'installation du serveur :
 
 ```
 $ ansible-playbook -i inventory playbook.yml
 ```
+
+Pour renseigner la clé privée :
+
+```
+$ ansible-playbook -i inventory playbook.yml --key-file "~/.ssh/mykey.pem"
+```
+
+L'option "ask-vault-pass" permet la demande de mot de passe, il existe aussi "vault-password-file"
+
+```
+$ ansible-playbook -i hosts install.yml --ask-vault-pass
+```
+
+### Role
 
 La commande pour la création de rôles, qui permettent de moduler la configuration
 
@@ -46,14 +62,10 @@ La commande pour la création de rôles, qui permettent de moduler la configurat
 $ ansible-galaxy init tools
 ```
 
+### Vault
+
 Commande création de chiffrement pour les chaines de caractères
 
 ```
 $ ansible-vault encrypt_string
-```
-
-L'option "ask-vault-pass" permet la demande de mot de passe, il existe aussi "vault-password-file"
-
-```
-$ ansible-playbook -i hosts install.yml --ask-vault-pass
 ```

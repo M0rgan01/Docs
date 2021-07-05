@@ -1,3 +1,8 @@
+[all:vars]
+#ansible_connection=ssh
+#ansible_user=vagrant
+#ansible_ssh_pass=vagrant
+
 [singleNode]
 172.16.0.2
 

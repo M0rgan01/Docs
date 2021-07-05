@@ -1,0 +1,16 @@
+---
+
+# les hosts concernés par ce playbook
+- hosts: singleNode
+  # utilisateur pour les actions
+  remote_user: root
+
+  vars:
+    bootstrap_expect: 1
+    retry_join: '[]'
+
+  roles:
+    - init
+    - dockerInstall
+    - consul
+    - nomad
