@@ -1,0 +1,99 @@
+---
+
+- name: Creates conf directory
+  file:
+    path: "{{ vault_config_dir }}"
+    state: directory
+
+- name: Creates data directory
+  file:
+    path: "{{ vault_data_dir }}"
+    state: directory
+
+- name: Download binary
+  get_url:
+    url: https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_linux_amd64.zip
+    dest: /tmp/vault_{{ vault_version }}_linux_amd64.zip
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
+    mode: 0755
+  # stock le résultat de l'opération dans une variable
+  register: vault_download
+
+- name: Unzip vault archive
+  unarchive:
+    src: "{{ vault_download.dest }}"
+    dest: /usr/local/bin
+    copy: no
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
+    mode: 0755
+
+- name: Config file
+  template:
+    src: vaultClientServerConfig.hcl.j2
+    dest: "{{ vault_config_dir }}/vaultClientServerConfig.hcl"
+
+- name: Service file
+  template:
+    src: vault.service.j2
+    dest: /etc/systemd/system/vault.service
+
+- name: Start vault service
+  service:
+    name: vault
+    state: started
+    enabled: yes
+
+- name: Create unseal directories
+  file:
+    path: "{{ unseal_keys_dir_output }}"
+    state: directory
+  # exécuté en local
+  delegate_to: localhost
+  # action faite une seule fois, peut importe le nombre de host
+  run_once: yes
+
+- name: Create root key directories
+  file:
+    path: "{{ root_token_dir_output }}"
+    state: directory
+  delegate_to: localhost
+  run_once: yes
+
+- name: Initialise Vault operator
+  shell: vault operator init -key-shares=5 -key-threshold=3 -format json
+  environment:
+    VAULT_ADDR: "http://{{ ansible_host }}:8200"
+  register: vault_init_results
+
+- name: Parse output of vault init
+  set_fact:
+    vault_init_parsed: "{{ vault_init_results.stdout | from_json }}"
+
+- name: Write unseal keys to files
+  copy:
+    dest: "{{ unseal_keys_dir_output }}/unseal_key_{{ item.0 }}"
+    content: "{{ item.1 }}"
+  with_indexed_items: "{{ vault_init_parsed.unseal_keys_hex }}"
+  delegate_to: localhost
+
+- name: Write root token to file
+  copy:
+    content: "{{ vault_init_parsed.root_token }}"
+    dest: "{{ root_token_dir_output }}/rootkey"
+  delegate_to: localhost
+
+- name: Reading unseal key contents
+  command: cat {{item}}
+  register: unseal_keys
+  with_fileglob: "{{ unseal_keys_dir_output }}/*"
+  delegate_to: localhost
+  become: no
+
+- name: Unseal vault with unseal keys
+  shell: |
+    vault operator unseal {{ item.stdout }}
+  environment:
+    VAULT_ADDR: "http://{{ ansible_host }}:8200"
+  with_items: "{{ unseal_keys.results }}"

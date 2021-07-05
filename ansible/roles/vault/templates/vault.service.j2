@@ -1,0 +1,15 @@
+[Unit]
+Description=Vault Service
+Documentation=https://www.vaultproject.io/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/vault server \
+  -config={{ vault_config_dir }}/vaultClientServerConfig.hcl
+
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

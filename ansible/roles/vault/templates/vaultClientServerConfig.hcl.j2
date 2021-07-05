@@ -1,0 +1,24 @@
+storage "raft" {
+    path    = "{{ vault_data_dir }}"
+    node_id = "node1"
+
+{% for host in retry_join %}
+    retry_join {
+        leader_api_addr = "http://{{ host }}:8200"
+    }
+{% endfor %}
+
+}
+
+listener "tcp" {
+  address = "{{ ansible_host }}:8200"
+  tls_disable = "true"
+}
+
+service_registration "consul" {
+  address = "{{ ansible_host }}:8500"
+}
+
+ui = true
+cluster_addr = "http://{{ ansible_host }}:8201"
+api_addr = "http://{{ ansible_host }}:8200"

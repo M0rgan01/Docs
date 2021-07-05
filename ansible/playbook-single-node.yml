@@ -7,7 +7,7 @@
 
   vars:
     bootstrap_expect: 1
-    retry_join: '[]'
+    retry_join: []
 
   vars_files:
     - ./vars.yml
@@ -17,3 +17,4 @@
     - dockerInstall
     - consul
     - nomad
+    - vault

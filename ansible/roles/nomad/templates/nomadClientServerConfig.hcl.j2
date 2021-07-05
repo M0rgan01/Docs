@@ -11,7 +11,7 @@ server {
   bootstrap_expect = {{ bootstrap_expect }}
   encrypt = "{{ nomad_encrypt }}"
   server_join {
-    retry_join = {{ retry_join }}
+    retry_join = {{ retry_join | to_json }}
   }
 }
 
