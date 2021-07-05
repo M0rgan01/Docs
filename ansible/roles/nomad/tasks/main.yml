@@ -9,6 +9,8 @@
   get_url:
     url: https://releases.hashicorp.com/nomad/{{nomad_version}}/nomad_{{nomad_version}}_linux_amd64.zip
     dest: /tmp/nomad_{{nomad_version}}_linux_amd64.zip
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
     mode: 0755
   # stock le résultat de l'opération dans une variable
   register: nomad_download
@@ -18,6 +20,8 @@
     src: "{{ nomad_download.dest }}"
     dest: /usr/local/bin
     copy: no
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
     mode: 0755
 
 - name: Config file

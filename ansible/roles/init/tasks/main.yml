@@ -1,10 +1,18 @@
 ---
 # tasks file for tools
 
+- name: Création du groupe
+  group:
+    name: "{{ user_group }}"
+  become: true
+
 - name: User | Création de {{ user }}
   user:
     name: "{{ user }}"
+    password: "{{ user_password | password_hash('sha512') }}"
+    group: "{{ user_group }}"
     shell: /bin/bash
+    state: present
 
 - name: User | Mise en place clef SSH
   authorized_key:
@@ -16,6 +24,6 @@
 - name: Install prerequisites
   package:
     name: "{{ item }}"
-    update_cache: yes
+    update_cache: true
   with_items: "{{ tools }}"
-  become: yes
+  become: true

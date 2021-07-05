@@ -9,6 +9,9 @@
     bootstrap_expect: 1
     retry_join: '[]'
 
+  vars_files:
+    - ./vars.yml
+
   roles:
     - init
     - dockerInstall
