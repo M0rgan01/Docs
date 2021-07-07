@@ -1,3 +1,5 @@
 ---
 consul_encrypt: TeLbPpWX41zMM3vfLwHHfQ==
 consul_version: 1.9.6
+consul_config_dir: /etc/consul.d
+consul_data_dir: /var/lib/consul

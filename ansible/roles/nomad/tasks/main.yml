@@ -2,7 +2,7 @@
 
 - name: Creates conf directory
   file:
-    path: /etc/nomad.d
+    path: "{{ nomad_config_dir }}"
     state: directory
 
 - name: Download binary
@@ -27,7 +27,7 @@
 - name: Config file
   template:
     src: nomadClientServerConfig.hcl.j2
-    dest: /etc/nomad.d/nomadClientServerConfig.hcl
+    dest: "{{ nomad_config_dir }}/nomadClientServerConfig.hcl"
 
 - name: Service file
   template:

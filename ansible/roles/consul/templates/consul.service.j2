@@ -7,7 +7,7 @@ Wants=network-online.target
 [Service]
 Restart=on-failure
 ExecStart=/usr/local/bin/consul agent \
-  -config-file=/etc/consul.d/consulClientServerConfig.hcl
+  -config-file={{ consul_config_dir }}/consulClientServerConfig.hcl
 
 ExecReload=/bin/kill -HUP $MAINPID
 

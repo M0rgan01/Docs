@@ -2,7 +2,7 @@
 
 - name: Creates conf directory
   file:
-    path: /etc/consul.d
+    path: "{{ consul_config_dir }}"
     state: directory
 
 - name: Download binary
@@ -27,7 +27,7 @@
 - name: Config file
   template:
     src: consulClientServerConfig.hcl.j2
-    dest: /etc/consul.d/consulClientServerConfig.hcl
+    dest: "{{ consul_config_dir }}/consulClientServerConfig.hcl"
 
 - name: Service file
   template:
