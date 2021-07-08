@@ -10,9 +10,23 @@ storage "raft" {
 
 }
 
+{% if ansible_host != vault_seal_leader %}
+seal "transit" {
+    address            = "http://{{ vault_seal_leader }}:8200"
+    # token is read from VAULT_TOKEN env
+    # token              = ""
+    disable_renewal    = "false"
+
+    // Key configuration
+    key_name           = "unseal_key"
+    mount_path         = "transit/"
+}
+{% endif %}
+
 listener "tcp" {
   address = "{{ ansible_host }}:8200"
   tls_disable = "true"
+  cluster_address = "{{ ansible_host }}:8201"
 }
 
 service_registration "consul" {

@@ -39,11 +39,12 @@
     src: vault.service.j2
     dest: /etc/systemd/system/vault.service
 
-- name: Start vault service
+- name: Start leader vault service
   service:
     name: vault
     state: started
     enabled: yes
+  when: ansible_host == vault_seal_leader
 
 - name: Create unseal directories
   file:
@@ -66,28 +67,33 @@
   environment:
     VAULT_ADDR: "http://{{ ansible_host }}:8200"
   register: vault_init_results
+  when: ansible_host == vault_seal_leader
 
 - name: Parse output of vault init
   set_fact:
     vault_init_parsed: "{{ vault_init_results.stdout | from_json }}"
+  when: ansible_host == vault_seal_leader
 
 - name: Write unseal keys to files
   copy:
     dest: "{{ unseal_keys_dir_output }}/{{ inventory_hostname }}_unseal_key"
     content: "{{ vault_init_parsed.unseal_keys_hex | join('\n') }}"
   delegate_to: localhost
+  when: inventory_hostname == vault_seal_leader
 
 - name: Write root token to file
   copy:
     content: "{{ vault_init_parsed.root_token }}"
     dest: "{{ root_token_dir_output }}/{{ inventory_hostname }}_rootkey"
   delegate_to: localhost
+  when: inventory_hostname == vault_seal_leader
 
 - name: Reading unseal key contents
   command: "cat {{ unseal_keys_dir_output }}/{{ inventory_hostname }}_unseal_key"
   register: unseal_keys
   delegate_to: localhost
   become: no
+  when: inventory_hostname == vault_seal_leader
 
 - name: Unseal vault with unseal keys
   shell: |
@@ -95,3 +101,20 @@
   environment:
     VAULT_ADDR: "http://{{ ansible_host }}:8200"
   with_items: "{{ unseal_keys.stdout_lines }}"
+  when: inventory_hostname == vault_seal_leader
+
+- name: Reading root key content
+  command: "cat {{ root_token_dir_output }}/{{ vault_seal_leader }}_rootkey"
+  register: root_key
+  delegate_to: localhost
+  become: no
+  when: inventory_hostname != vault_seal_leader
+
+- name: Start follower vault service
+  service:
+    name: vault
+    state: started
+    enabled: yes
+  environment:
+    VAULT_TOKEN: "{{ root_key.stdout }}"
+  when: ansible_host != vault_seal_leader

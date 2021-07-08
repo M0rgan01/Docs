@@ -4,9 +4,9 @@
 
 Les commandes pour l'installation d'ansible.
 
-***Prérequis serveur**
+***Prérequis**
 
-Les serveurs cibles doivent avoir installés python3
+Une dépendance à python3 est nécessaire pour le fonctionnement d'Ansible
 
 ```
 $ sudo apt install python3
@@ -51,7 +51,7 @@ $ ansible-playbook -i inventory playbook.yml --key-file "~/.ssh/mykey.pem"
 L'option "ask-vault-pass" permet la demande de mot de passe, il existe aussi "vault-password-file"
 
 ```
-$ ansible-playbook -i hosts install.yml --ask-vault-pass
+$ ansible-playbook -i hosts playbook.yml --ask-vault-pass
 ```
 
 ### Role
