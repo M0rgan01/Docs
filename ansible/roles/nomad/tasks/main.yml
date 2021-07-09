@@ -34,10 +34,34 @@
     src: nomad.service.j2
     dest: /etc/systemd/system/nomad.service
   # exécute le handler systemd_reload
-  notify: systemd_reload
+  # notify: systemd_reload
 
 - name: Start nomad service
   service:
     name: nomad
     state: started
     enabled: yes
+
+- name: Wait nomad startup
+  pause:
+    seconds: 10
+
+- name: Copy all jobs in files dir
+  copy:
+    src: jobs
+    dest: "{{ nomad_config_dir }}"
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
+    mode: 0755
+
+- name: Run traefik service
+  shell: "nomad job run {{ nomad_config_dir }}/jobs/traefik.nomad"
+  environment:
+    NOMAD_ADDR: "http://{{ ansible_host }}:4646"
+  run_once: yes
+
+- name: Run web service
+  shell: "nomad job run {{ nomad_config_dir }}/jobs/http-echo-dynamic-service.nomad"
+  environment:
+    NOMAD_ADDR: "http://{{ ansible_host }}:4646"
+  run_once: yes
