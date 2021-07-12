@@ -1,8 +1,8 @@
-# Nomad
+# Vault
 
 ## Ajuster l'adresse de la CLI
 
-Par défaut la cli Nomad pointe sur localhost (127.0.0.1), pour modifier cette valeur, éxecuter la commande suivante
+Par défaut la cli Vault pointe sur localhost (127.0.0.1), pour modifier cette valeur, éxecuter la commande suivante
 
 ```
 $ export VAULT_ADDR=http://172.16.0.2:8200
