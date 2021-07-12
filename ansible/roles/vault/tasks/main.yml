@@ -10,6 +10,11 @@
     path: "{{ vault_data_dir }}"
     state: directory
 
+- name: Creates follower service configuration directory
+  file:
+    path: "{{ vault_service_conf_dir }}"
+    state: directory
+
 - name: Download binary
   get_url:
     url: https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_linux_amd64.zip
@@ -34,7 +39,7 @@
     src: vaultClientServerConfig.hcl.j2
     dest: "{{ vault_config_dir }}/vaultClientServerConfig.hcl"
 
-- name: Service file
+- name: Copy Service file
   template:
     src: vault.service.j2
     dest: /etc/systemd/system/vault.service
@@ -95,6 +100,13 @@
   become: no
   when: inventory_hostname == vault_seal_leader
 
+- name: Reading root key content
+  command: "cat {{ root_token_dir_output }}/{{ vault_seal_leader }}_rootkey"
+  register: root_key
+  delegate_to: localhost
+  become: no
+  when: inventory_hostname != vault_seal_leader
+
 - name: Unseal vault with unseal keys
   shell: |
     vault operator unseal {{ item }}
@@ -103,18 +115,22 @@
   with_items: "{{ unseal_keys.stdout_lines }}"
   when: inventory_hostname == vault_seal_leader
 
-- name: Reading root key content
-  command: "cat {{ root_token_dir_output }}/{{ vault_seal_leader }}_rootkey"
-  register: root_key
-  delegate_to: localhost
-  become: no
+- name: Copy Service follower config file
+  template:
+    src: vaultFollowerConf.service.j2
+    dest: "{{ vault_service_conf_dir }}/vaultEnv.conf"
   when: inventory_hostname != vault_seal_leader
+
+- name: Enable Vault leader transit
+  shell: vault secrets enable transit && vault write -f transit/keys/unseal_key
+  environment:
+    VAULT_ADDR: "http://{{ ansible_host }}:8200"
+    VAULT_TOKEN: "{{ root_key.stdout }}"
+  when: ansible_host == vault_seal_leader
 
 - name: Start follower vault service
   service:
     name: vault
     state: started
     enabled: yes
-  environment:
-    VAULT_TOKEN: "{{ root_key.stdout }}"
   when: ansible_host != vault_seal_leader
