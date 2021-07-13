@@ -19,6 +19,12 @@ Vagrant.configure("2") do |config|
       :box => "ubuntu/focal64",
       :ip => "172.16.0.4",
       :ssh_port => '2202'
+    },
+    {
+      :hostname => "Server4",
+      :box => "ubuntu/focal64",
+      :ip => "172.16.0.5",
+      :ssh_port => '2203'
     }
   ]
 
@@ -38,8 +44,8 @@ Vagrant.configure("2") do |config|
       end
 
       node.vm.provider :virtualbox do |vb|
-        vb.customize ["modifyvm", :id, "--memory", 2048]
-        vb.customize ["modifyvm", :id, "--cpus", 2]
+        vb.customize ["modifyvm", :id, "--memory", 1024]
+        vb.customize ["modifyvm", :id, "--cpus", 1]
       end
     end
   end
