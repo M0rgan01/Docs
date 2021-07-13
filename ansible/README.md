@@ -36,13 +36,35 @@ $ sudo apt install ansible
 
 ## Commandes
 
-### Playbook
+### Playbooks
 
 La mise en place des VMs est nécessaire avant de lancer un playbook, faire un `vagrant up`
 dans l'un des dossiers suivants :
 
 - [1-node-vm](../hashiCorpStack/vagrant/standard-vm/1-node-vm) pour du single-node
-- [3-nodes-vm](../hashiCorpStack/vagrant/standard-vm/3-nodes-vm) pour un cluster à 3 nodes
+
+<p align="center">
+    <img src="nomadConsulVaultSingleNode.png"
+    alt="nomadConsul3NodesCluster"
+    width="50%"
+    />
+</p>
+
+
+Voiçi la commande pour lancer le playbook :
+
+```
+$ ansible-playbook -i inventory playbook-single-node.yml
+```
+
+- [4-nodes-vm](../hashiCorpStack/vagrant/standard-vm/4-nodes-vm) pour un cluster à 4 nodes
+
+<p align="center">
+    <img src="nomadConsulVaultCluster.png"
+    alt="nomadConsul3NodesCluster"
+    width="50%"
+    />
+</p>
 
 
 Voiçi la commande pour lancer le playbook :
@@ -51,11 +73,32 @@ Voiçi la commande pour lancer le playbook :
 $ ansible-playbook -i inventory playbook.yml
 ```
 
-Pour renseigner une clé privée spécifique :
+**URLs**
 
-```
-$ ansible-playbook -i inventory playbook.yml --key-file "~/.ssh/mykey.pem"
-```
+Consul:
+    - 172.16.0.2:8500
+    - (4-nodes-vm only) 172.16.0.3:8500
+    - (4-nodes-vm only) 172.16.0.4:8500
+nomad:
+    - 172.16.0.2:4646
+    - (4-nodes-vm only) 172.16.0.3:4646
+    - (4-nodes-vm only) 172.16.0.4:4646
+Vault:
+    - 172.16.0.2:8200
+    - (4-nodes-vm only) 172.16.0.3:8200
+    - (4-nodes-vm only) 172.16.0.4:8200
+Traefik:
+    - 172.16.0.2:8081
+    - (4-nodes-vm only) 172.16.0.3:8081
+    - (4-nodes-vm only) 172.16.0.4:8081
+WebApp:
+    - 172.16.0.2/myapp
+    - (4-nodes-vm only) 172.16.0.3/myapp
+    - (4-nodes-vm only) 172.16.0.4/myapp
+
+**Tokens**
+
+Les dossiers vaultToken et vaultUnseal générés contiennent les clés de root, de unseal et de recovery des vaults
 
 ### Role
 
