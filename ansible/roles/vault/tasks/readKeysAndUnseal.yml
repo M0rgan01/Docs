@@ -1,0 +1,14 @@
+---
+
+- name: Reading unseal key contents
+  command: "cat {{ unseal_keys_dir_output }}/{{ inventory_hostname }}_unseal_key"
+  register: unseal_keys
+  delegate_to: localhost
+  become: no
+
+- name: Unseal vault with unseal keys
+  shell: |
+    vault operator unseal {{ item }}
+  environment:
+    VAULT_ADDR: "http://{{ ansible_host }}:8200"
+  with_items: "{{ unseal_keys.stdout_lines }}"

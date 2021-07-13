@@ -1,0 +1,6 @@
+storage "inmem" {}
+listener "tcp" {
+  address = "{{ ansible_host }}:8200"
+  tls_disable = true
+}
+disable_mlock = true

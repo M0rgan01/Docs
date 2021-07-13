@@ -16,3 +16,6 @@ une_variable_uniquement_sur_172.16.0.2=test
 
 [cluster:vars]
 une_variable_uniquement_sur_172.16.0.3_et_172.16.0.4=test2
+
+[vaultUnsealNode]
+172.16.0.5

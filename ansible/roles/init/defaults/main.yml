@@ -1,2 +1,2 @@
 ---
-tools: ['git', 'vim', 'curl', 'python3-pip', 'unzip']
+tools: ['curl', 'python3-pip', 'unzip']

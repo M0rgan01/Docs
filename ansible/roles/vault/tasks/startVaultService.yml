@@ -1,0 +1,7 @@
+---
+
+- name: Start vault service
+  service:
+    name: vault
+    state: started
+    enabled: yes

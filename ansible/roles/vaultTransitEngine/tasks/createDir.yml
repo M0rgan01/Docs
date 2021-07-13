@@ -1,0 +1,22 @@
+---
+
+- name: Create unseal directories
+  file:
+    path: "{{ unseal_keys_dir_output }}"
+    state: directory
+  # exécuté en local
+  delegate_to: localhost
+  # action faite une seule fois, peut importe le nombre de host
+  run_once: yes
+
+- name: Create root key directories
+  file:
+    path: "{{ root_token_dir_output }}"
+    state: directory
+  delegate_to: localhost
+  run_once: yes
+
+- name: Creates conf directory
+  file:
+    path: "{{ vault_config_dir }}"
+    state: directory

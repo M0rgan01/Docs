@@ -1,8 +1,16 @@
 ---
 
-# les hosts concernés par ce playbook
+- hosts: vaultUnsealNode
+  remote_user: root
+
+  vars_files:
+    - ./vars.yml
+
+  roles:
+    - init
+    - vaultTransitEngine
+
 - hosts: cluster
-  # utilisateur pour les actions
   remote_user: root
 
   vars:
@@ -18,3 +26,4 @@
     - consul
     - nomad
     - vault
+

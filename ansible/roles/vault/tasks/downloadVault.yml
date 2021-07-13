@@ -1,0 +1,20 @@
+---
+
+- name: Download binary
+  get_url:
+    url: https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_linux_amd64.zip
+    dest: /tmp/vault_{{ vault_version }}_linux_amd64.zip
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
+    mode: 0755
+  # stock le résultat de l'opération dans une variable
+  register: vault_download
+
+- name: Unzip vault archive
+  unarchive:
+    src: "{{ vault_download.dest }}"
+    dest: /usr/local/bin
+    copy: no
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
+    mode: 0755

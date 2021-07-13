@@ -1,0 +1,16 @@
+---
+
+- name: Creates conf directory
+  file:
+    path: "{{ vault_config_dir }}"
+    state: directory
+
+- name: Creates data directory
+  file:
+    path: "{{ vault_data_dir }}"
+    state: directory
+
+- name: Creates service configuration directory
+  file:
+    path: "{{ vault_service_conf_dir }}"
+    state: directory

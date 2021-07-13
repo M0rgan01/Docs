@@ -1,0 +1,7 @@
+---
+
+- name: Reading root key content
+  command: "cat {{ root_token_dir_output }}/{{ root_key_to_get }}_rootkey"
+  register: root_key
+  delegate_to: localhost
+  become: no

@@ -1,0 +1,23 @@
+---
+
+- include_tasks: createDir.yml
+
+- include_tasks: ../../vault/tasks/downloadVault.yml
+
+- include_tasks: ../../vault/tasks/copyConfig.yml
+
+- include_tasks: ../../vault/tasks/startVaultService.yml
+
+- include_tasks: initOperatorAndWriteKey.yml
+
+- include_tasks: ../../vault/tasks/readKeysAndUnseal.yml
+
+- include_tasks: ../../vault/tasks/readRootKey.yml
+  vars:
+    - root_key_to_get: "{{ inventory_hostname }}"
+
+- name: Enable Vault leader transit
+  shell: vault secrets enable transit && vault write -f transit/keys/unseal_key
+  environment:
+    VAULT_ADDR: "http://{{ ansible_host }}:8200"
+    VAULT_TOKEN: "{{ root_key.stdout }}"
