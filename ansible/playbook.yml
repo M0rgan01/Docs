@@ -25,5 +25,5 @@
     - dockerInstall
     - consul
     - nomad
-    - vault
+    - vaultCluster
 

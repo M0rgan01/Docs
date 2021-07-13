@@ -1,0 +1,6 @@
+---
+
+- name: Creates service configuration directory
+  file:
+    path: "{{ vault_service_conf_dir }}"
+    state: directory

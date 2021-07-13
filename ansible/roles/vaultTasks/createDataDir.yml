@@ -1,0 +1,6 @@
+---
+
+- name: Creates data directory
+  file:
+    path: "{{ vault_data_dir }}"
+    state: directory

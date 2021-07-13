@@ -1,0 +1,19 @@
+storage "raft" {
+    path    = "{{ vault_data_dir }}"
+    node_id = "{{ ansible_host }}"
+}
+
+listener "tcp" {
+  address = "{{ ansible_host }}:8200"
+  cluster_address = "{{ ansible_host }}:8201"
+  tls_disable = "true"
+}
+
+service_registration "consul" {
+  address = "{{ ansible_host }}:8500"
+}
+
+disable_mlock = true
+ui = true
+cluster_addr = "http://{{ ansible_host }}:8201"
+api_addr = "http://{{ ansible_host }}:8200"

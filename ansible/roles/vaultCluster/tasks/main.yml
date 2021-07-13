@@ -1,12 +1,16 @@
 ---
 
-- include_tasks: createDir.yml
+- include_tasks: ../../vaultTasks/createConfDir.yml
 
-- include_tasks: downloadVault.yml
+- include_tasks: ../../vaultTasks/createDataDir.yml
 
-- include_tasks: copyConfig.yml
+- include_tasks: ../../vaultTasks/createServiceConfDir.yml
 
-- include_tasks: readRootKey.yml
+- include_tasks: ../../vaultTasks/downloadVault.yml
+
+- include_tasks: ../../vaultTasks/copyConfig.yml
+
+- include_tasks: ../../vaultTasks/readRootKey.yml
   vars:
     - root_key_to_get: "{{ vault_transit_engine }}"
 
@@ -15,16 +19,13 @@
     src: vaultFollowerConf.service.j2
     dest: "{{ vault_service_conf_dir }}/vaultEnv.conf"
 
-- include_tasks: startVaultService.yml
+- include_tasks: ../../vaultTasks/startVaultService.yml
   when: ansible_host == vault_seal_leader
 
-- include_tasks: initOperatorAndWriteKeys.yml
+- include_tasks: ../../vaultTasks/initOperatorAndWriteUnsealKeys.yml
   when: ansible_host == vault_seal_leader
 
-- include_tasks: readKeysAndUnseal.yml
-  when: ansible_host == vault_seal_leader
-
-- include_tasks: startVaultService.yml
+- include_tasks: ../../vaultTasks/startVaultService.yml
   when: ansible_host != vault_seal_leader
 
 - name: Wait vault startup

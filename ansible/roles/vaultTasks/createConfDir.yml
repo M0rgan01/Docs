@@ -1,0 +1,6 @@
+---
+
+- name: Creates conf directory
+  file:
+    path: "{{ vault_config_dir }}"
+    state: directory
