@@ -20,3 +20,10 @@ consul {
   address = "{{ ansible_host }}:8500"
 }
 
+plugin "docker" {
+  config {
+    volumes {
+      enabled = true
+    }
+  }
+}
