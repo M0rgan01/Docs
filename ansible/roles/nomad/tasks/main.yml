@@ -44,7 +44,7 @@
 
 - name: Wait nomad startup
   pause:
-    seconds: 10
+    seconds: 15
 
 - name: Copy all jobs in files dir
   copy:

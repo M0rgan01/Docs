@@ -16,5 +16,5 @@
     - init
     - dockerInstall
     - consul
-    - nomad
     - vaultSingleNode
+    - nomad

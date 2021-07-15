@@ -24,6 +24,6 @@
     - init
     - dockerInstall
     - consul
-    - nomad
     - vaultCluster
+    - nomad
 
