@@ -76,25 +76,34 @@ $ ansible-playbook -i inventory playbook.yml
 **URLs**
 
 Consul:
-    - 172.16.0.2:8500
-    - (4-nodes-vm only) 172.16.0.3:8500
-    - (4-nodes-vm only) 172.16.0.4:8500
+
+- 172.16.0.2:8500
+- (4-nodes-vm only) 172.16.0.3:8500
+- (4-nodes-vm only) 172.16.0.4:8500
+
 nomad:
-    - 172.16.0.2:4646
-    - (4-nodes-vm only) 172.16.0.3:4646
-    - (4-nodes-vm only) 172.16.0.4:4646
+
+- 172.16.0.2:4646
+- (4-nodes-vm only) 172.16.0.3:4646
+- (4-nodes-vm only) 172.16.0.4:4646
+
 Vault:
-    - 172.16.0.2:8200
-    - (4-nodes-vm only) 172.16.0.3:8200
-    - (4-nodes-vm only) 172.16.0.4:8200
+
+- 172.16.0.2:8200
+- (4-nodes-vm only) 172.16.0.3:8200
+- (4-nodes-vm only) 172.16.0.4:8200
+
 Traefik:
-    - 172.16.0.2:8081
-    - (4-nodes-vm only) 172.16.0.3:8081
-    - (4-nodes-vm only) 172.16.0.4:8081
+
+- 172.16.0.2:8081
+- (4-nodes-vm only) 172.16.0.3:8081
+- (4-nodes-vm only) 172.16.0.4:8081
+
 WebApp:
-    - 172.16.0.2/myapp
-    - (4-nodes-vm only) 172.16.0.3/myapp
-    - (4-nodes-vm only) 172.16.0.4/myapp
+
+- 172.16.0.2/myapp
+- (4-nodes-vm only) 172.16.0.3/myapp
+- (4-nodes-vm only) 172.16.0.4/myapp
 
 **Tokens**
 

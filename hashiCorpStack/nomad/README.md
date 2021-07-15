@@ -2,11 +2,11 @@
 
 ## Helpers
 
-- Le fichier [jobHelper.nomad](./jobs/jobHelper.nomad) comporte des commentaires pour aider 
+- Le fichier [jobHelper.nomad](./jobs/jobHelper.nomad) comporte des commentaires pour aider
   à la compréhension de certaines stanza des jobs
-- Le fichier [helper.policy.hcl](./policies/helper.policy.hcl) comporte des commentaires pour 
+- Le fichier [helper.policy.hcl](./policies/helper.policy.hcl) comporte des commentaires pour
   aider à la compréhension de certaines stanza des policies
-  
+
 ## Mise en place d'un cluster consul / nomad à 4 noeuds
 
 <p align="center">
@@ -33,12 +33,28 @@
 - Vagrant
   - [Script initialisation](../vagrant/hashicorp-dev-vm/init.sh)
   - [Vagrantfile](../vagrant/hashicorp-dev-vm/4-nodes-vm/Vagrantfile)
-  
+
 **Commande**
 
 ```
 $ Vagrant up
 ```
+
+**URLs**
+
+Consul:
+
+- 172.16.0.2:8500 (server)
+- 172.16.0.3:8500 (client)
+- 172.16.0.4:8500 (client)
+- 172.16.0.5:8500 (client)
+
+nomad:
+
+- 172.16.0.2:4646 (server)
+- 172.16.0.3:4646 (client)
+- 172.16.0.4:4646 (client)
+- 172.16.0.5:4646 (client)
 
 ## Mise en place d'un cluster consul / nomad à 3 noeuds
 
@@ -74,7 +90,21 @@ $ Vagrant up
 $ Vagrant up
 ```
 
-## Mise en place d'un environnement de dev consul / nomad
+**URLs**
+
+Consul:
+
+- 172.16.0.2:8500 (server / client)
+- 172.16.0.3:8500 (server / client)
+- 172.16.0.4:8500 (server / client)
+
+nomad:
+
+- 172.16.0.2:4646 (server / client)
+- 172.16.0.3:4646 (server / client)
+- 172.16.0.4:4646 (server / client)
+
+## Mise en place d'une instance de dev consul / nomad / vault
 
 *Nécessite [Vagrant](https://www.vagrantup.com/downloads)
 <br />
@@ -90,15 +120,37 @@ $ Vagrant up
   - [Install](../consul/installConsul.sh)
   - [consul service](../consul/execConsulDev.sh)
   - [consul conf](../consul/config/consulDevConfig.hcl)
+- vault
+  - [Install](../vault/installVault.sh)
+  - [vault service](../vault/execVaultDev.sh)
+  - [vault conf](../vault/config/vaultDevConfig.hcl)
 - Vagrant
   - [Script initialisation](../vagrant/hashicorp-dev-vm/init.sh)
   - [Vagrantfile](../vagrant/hashicorp-dev-vm/1-node-vm/Vagrantfile)
-  
+
 **Commande**
 
 ```
 $ Vagrant up
 ```
+
+**URLs**
+
+Consul:
+
+- 172.16.0.2:8500 (dev mode)
+
+nomad:
+
+- 172.16.0.2:4646 (dev mode)
+
+vault:
+
+- 172.16.0.2:8200 (dev mode)
+
+**Vault token**
+
+Le token pour l'authentification vault est `SQQHkK672aXEoxmDJU5lSu7H`
 
 ## Ajuster l'adresse de la CLI
 
@@ -131,15 +183,15 @@ Pour effectuer des opérations avec la CLI il faut exporter la variable d'enviro
 $ export NOMAD_TOKEN="BOOTSTRAP_SECRET_ID"
 ```
 
-Le fichier [anonymous.policy](./policies/anonymous.policy.hcl) permet de configurer des policies de type anonyme, 
-utilisé pour permettre l'accès temporaire à l'API nomad en attendant de mettre en place d'autre policies et 
+Le fichier [anonymous.policy](./policies/anonymous.policy.hcl) permet de configurer des policies de type anonyme,
+utilisé pour permettre l'accès temporaire à l'API nomad en attendant de mettre en place d'autre policies et
 des tokens. La commande suivante applique des policies de type anonyme :
 
 ```
 $ nomad acl policy apply -description "Anonymous policy (full-access)" anonymous ./policies/anonymous.policy.hcl
 ```
 
-Il existe 2 type de token : 
+Il existe 2 type de token :
 - management -> donne toutes les permissions
 - client -> donne les permissions des policies attribuées
 

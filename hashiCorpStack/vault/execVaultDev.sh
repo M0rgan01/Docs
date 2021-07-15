@@ -11,7 +11,7 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/local/bin/vault server \
-  -config=/home/vagrant/etc/vault.d/vaultDevConf.hcl \
+  -config=/home/vagrant/etc/vault.d/vaultDevConfig.hcl \
   -dev \
   -dev-root-token-id=SQQHkK672aXEoxmDJU5lSu7H
 
