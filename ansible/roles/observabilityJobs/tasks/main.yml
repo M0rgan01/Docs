@@ -1,0 +1,21 @@
+---
+
+- name: Copy all jobs in files dir
+  copy:
+    src: jobs
+    dest: "{{ nomad_config_dir }}"
+    owner: "{{ user }}"
+    group: "{{ user_group }}"
+    mode: 0755
+
+- name: Run observabilities jobs
+  shell: "nomad job run {{ nomad_config_dir }}/jobs/{{ item }}.nomad"
+  environment:
+    NOMAD_ADDR: "http://{{ ansible_host }}:4646"
+  run_once: yes
+  with_items:
+    - grafana
+    - loki
+    - prometheus
+    - promtail
+    - tempo
