@@ -42,6 +42,9 @@ La mise en place des VMs est nécessaire avant de lancer un playbook, faire un `
 dans l'un des dossiers suivants :
 
 - [1-node-vm](../hashiCorpStack/vagrant/standard-vm/1-node-vm) pour du single-node
+- [4-nodes-vm](../hashiCorpStack/vagrant/standard-vm/4-nodes-vm) pour un cluster à 4 nodes
+
+#### Single-node playbook
 
 <p align="center">
     <img src="nomadConsulVaultSingleNode.png"
@@ -57,7 +60,7 @@ Voiçi la commande pour lancer le playbook :
 $ ansible-playbook -i inventory playbook-single-node.yml
 ```
 
-- [4-nodes-vm](../hashiCorpStack/vagrant/standard-vm/4-nodes-vm) pour un cluster à 4 nodes
+#### 4 nodes cluster playbook
 
 <p align="center">
     <img src="nomadConsulVaultCluster.png"
