@@ -76,7 +76,7 @@ Voiçi la commande pour lancer le playbook :
 $ ansible-playbook -i inventory playbook.yml
 ```
 
-**URLs**
+**- URLs**
 
 Consul:
 
@@ -108,9 +108,12 @@ WebApp:
 - (4-nodes-vm only) 172.16.0.3/myapp
 - (4-nodes-vm only) 172.16.0.4/myapp
 
-**Tokens**
+**- Tokens**
 
-Les dossiers vaultToken et vaultUnseal générés contiennent les clés de root, de unseal et de recovery des vaults
+Les dossiers vaultToken et vaultUnseal générés en local contiennent les clés de root, de unseal 
+et de recovery des vaults.
+
+Dans le scénario à 4 nodes les 3 vaults "actifs" sont unseal automatiquement par le vault qui dispose du transit
 
 ### Role
 
@@ -120,7 +123,7 @@ La commande pour la création de rôles, qui permettent de moduler la configurat
 $ ansible-galaxy init tools
 ```
 
-### Vault
+### Ansible-vault
 
 Commande création de chiffrement pour les chaines de caractères
 
