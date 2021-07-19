@@ -22,7 +22,7 @@
 - include_tasks: ../../vaultTasks/startVaultService.yml
   when: ansible_host == vault_seal_leader
 
-- include_tasks: ../../vaultTasks/initOperatorAndWriteUnsealKeys.yml
+- include_tasks: ../../vaultTasks/initOperatorAndWriteRecoveriesKeys.yml
   when: ansible_host == vault_seal_leader
 
 - include_tasks: ../../vaultTasks/startVaultService.yml
