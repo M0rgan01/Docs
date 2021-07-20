@@ -19,3 +19,4 @@
     - prometheus
     - promtail
     - tempo
+    - tns-app

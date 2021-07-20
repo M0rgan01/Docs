@@ -7,3 +7,7 @@ ui = true
 bootstrap_expect = {{ bootstrap_expect }}
 retry_join = {{ retry_join | to_json }}
 encrypt = "{{ consul_encrypt }}"
+
+connect {
+  enabled = true
+}

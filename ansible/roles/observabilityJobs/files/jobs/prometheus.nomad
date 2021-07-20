@@ -27,7 +27,7 @@ global:
 scrape_configs:
   - job_name: 'self'
     consul_sd_configs:
-      - server: '172.17.0.1:8500'
+      - server: '172.16.0.2:8500'
     relabel_configs:
       - source_labels: [__meta_consul_service_metadata_external_source]
         target_label: source

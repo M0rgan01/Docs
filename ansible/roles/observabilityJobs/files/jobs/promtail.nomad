@@ -35,8 +35,10 @@ scrape_configs:
   consul_sd_configs:
     - server: '172.16.0.2:8500'
   relabel_configs:
+      # valeur du label
     - source_labels: [__meta_consul_node]
-      target_label: __host__
+      # nom du label
+      target_label: 'consul_node'
     - source_labels: [__meta_consul_service_metadata_external_source]
       target_label: source
       regex: (.*)
@@ -70,9 +72,10 @@ EOTC
           "-config.file=/local/promtail.yml",
           "-server.http-listen-port=${NOMAD_PORT_http}",
         ]
+        # volume nomad des datas
         volumes = [
           "/data/promtail:/data",
-          "/opt/nomad/data/:/nomad/"
+          "/var/lib/nomad/:/nomad/"
         ]
       }
 
