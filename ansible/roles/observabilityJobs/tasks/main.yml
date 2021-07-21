@@ -8,6 +8,13 @@
     group: "{{ user_group }}"
     mode: 0755
 
+- name: Copy all jobs in templates dir
+  template:
+    src: "{{ item }}"
+    dest: "{{ nomad_config_dir }}/jobs/{{ item | basename | regex_replace('\\.j2$', '') }}"
+  with_fileglob:
+    - ../templates/*.j2
+
 - name: Run observabilities jobs
   shell: "nomad job run {{ nomad_config_dir }}/jobs/{{ item }}.nomad"
   environment:

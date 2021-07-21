@@ -39,7 +39,7 @@ datasources:
   - name: Prometheus
     type: prometheus
     access: proxy
-    url: http://172.16.0.2:9090
+    url: http://{{ ansible_host }}:9090
     jsonData:
       exemplarTraceIdDestinations:
       - name: traceID
@@ -47,12 +47,12 @@ datasources:
   - name: Tempo
     type: tempo
     access: proxy
-    url: http://172.16.0.2:3400
+    url: http://{{ ansible_host }}:3400
     uid: tempo
   - name: Loki
     type: loki
     access: proxy
-    url: http://172.16.0.2:3100
+    url: http://{{ ansible_host }}:3100
     jsonData:
       derivedFields:
         - datasourceUid: tempo

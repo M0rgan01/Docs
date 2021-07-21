@@ -1,16 +1,13 @@
-job "tempo" {
+job "loki" {
   datacenters = ["dc1"]
   type        = "service"
 
-  group "tempo" {
+  group "loki" {
     count = 1
 
     network {
-      port "tempo" {
-        static = "3400"
-      }
-      port "tempo-write" {
-        static = "6831"
+      port "http" {
+        static = 3100
       }
     }
 
@@ -20,27 +17,22 @@ job "tempo" {
       mode     = "delay"
     }
 
-    task "tempo" {
+    task "loki" {
       driver = "docker"
 
       env {
-        JAEGER_AGENT_HOST    = "172.16.0.2"
+        JAEGER_AGENT_HOST    = "{{ ansible_host }}"
         JAEGER_TAGS          = "cluster=nomad"
         JAEGER_SAMPLER_TYPE  = "probabilistic"
         JAEGER_SAMPLER_PARAM = "1"
       }
 
-      artifact {
-        source      = "https://raw.githubusercontent.com/grafana/tempo/master/example/docker-compose/local/tempo-local.yaml"
-        mode        = "file"
-        destination = "/local/tempo.yml"
-      }
       config {
-        image = "grafana/tempo:latest"
-        ports = ["tempo", "tempo-write"]
+        image = "grafana/loki:latest"
+        ports = ["http"]
         args = [
-          "-config.file=/local/tempo.yml",
-          "-server.http-listen-port=${NOMAD_PORT_tempo}",
+          "-config.file",
+          "/etc/loki/local-config.yaml",
         ]
       }
 
@@ -50,12 +42,12 @@ job "tempo" {
       }
 
       service {
-        name = "tempo"
-        port = "tempo"
+        name = "loki"
+        port = "http"
         tags = ["monitoring","prometheus"]
 
         check {
-          name     = "Tempo HTTP"
+          name     = "Loki HTTP"
           type     = "http"
           path     = "/ready"
           interval = "5s"

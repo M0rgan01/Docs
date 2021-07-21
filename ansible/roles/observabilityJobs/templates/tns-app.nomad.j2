@@ -29,7 +29,7 @@ job "tns" {
     task "db" {
       driver = "docker"
       env {
-        JAEGER_AGENT_HOST    = "172.16.0.2"
+        JAEGER_AGENT_HOST    = "{{ ansible_host }}"
         JAEGER_TAGS          = "cluster=nomad"
         JAEGER_SAMPLER_TYPE  = "probabilistic"
         JAEGER_SAMPLER_PARAM = "1"
@@ -54,7 +54,7 @@ job "tns" {
     task "app" {
       driver = "docker"
       env {
-        JAEGER_AGENT_HOST    = "172.16.0.2"
+        JAEGER_AGENT_HOST    = "{{ ansible_host }}"
         JAEGER_TAGS          = "cluster=nomad"
         JAEGER_SAMPLER_TYPE  = "probabilistic"
         JAEGER_SAMPLER_PARAM = "1"
@@ -66,7 +66,7 @@ job "tns" {
         args = [
           "-log.level=debug",
           "-server.http-listen-port=${NOMAD_PORT_app}",
-          "http://172.16.0.2:${NOMAD_PORT_db}",
+          "http://{{ ansible_host }}:${NOMAD_PORT_db}",
         ]
       }
 
@@ -80,7 +80,7 @@ job "tns" {
     task "loadgen" {
       driver = "docker"
       env {
-        JAEGER_AGENT_HOST    = "172.16.0.2"
+        JAEGER_AGENT_HOST    = "{{ ansible_host }}"
         JAEGER_TAGS          = "cluster=nomad"
         JAEGER_SAMPLER_TYPE  = "probabilistic"
         JAEGER_SAMPLER_PARAM = "1"
@@ -92,7 +92,7 @@ job "tns" {
         args = [
           "-log.level=debug",
           "-server.http-listen-port=${NOMAD_PORT_loadgen}",
-          "http://172.16.0.2:${NOMAD_PORT_app}",
+          "http://{{ ansible_host }}:${NOMAD_PORT_app}",
         ]
       }
 
