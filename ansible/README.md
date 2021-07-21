@@ -60,6 +60,22 @@ Voiçi la commande pour lancer le playbook :
 $ ansible-playbook -i inventory playbook-single-node.yml
 ```
 
+L'instance après installation comprend : 
+
+- consul -> port **8500**
+- nomad -> port **4646**
+    - traefik -> port **8081** / **80**
+    - webapp -> route **/myapp**
+    - grafana -> port **3000**
+    - prometheus -> port **9090**
+    - loki -> port **3100**
+    - promtail -> port **3200**
+    - tempo -> port 3400 / **6831**
+    - node-exporter -> port **9100**
+    - cAdvisor -> port **8080**
+- vault -> port **8200**
+- docker
+
 #### 4 nodes cluster playbook
 
 <p align="center">
@@ -76,55 +92,14 @@ Voiçi la commande pour lancer le playbook :
 $ ansible-playbook -i inventory playbook.yml
 ```
 
-**- URLs**
+Chaque instance après installation comprend :
 
-Consul:
-
-- 172.16.0.2:8500
-- (4-nodes-vm only) 172.16.0.3:8500
-- (4-nodes-vm only) 172.16.0.4:8500
-
-nomad:
-
-- 172.16.0.2:4646
-- (4-nodes-vm only) 172.16.0.3:4646
-- (4-nodes-vm only) 172.16.0.4:4646
-
-Vault:
-
-- 172.16.0.2:8200
-- (4-nodes-vm only) 172.16.0.3:8200
-- (4-nodes-vm only) 172.16.0.4:8200
-
-Traefik:
-
-- 172.16.0.2:8081
-- (4-nodes-vm only) 172.16.0.3:8081
-- (4-nodes-vm only) 172.16.0.4:8081
-
-WebApp:
-
-- 172.16.0.2/myapp
-- (4-nodes-vm only) 172.16.0.3/myapp
-- (4-nodes-vm only) 172.16.0.4/myapp
-
-Grafana:
-
-- 172.16.0.2:3000 (single-node only)
-
-Promtail:
-
-- 172.16.0.2:3200 (single-node only)
-
-Prometheus:
-
-- 172.16.0.2:9090 (single-node only)
-
-cAdvisor:
-
-- 172.16.0.2:8080 (single-node only)
-
-Traefik:
+- consul -> port **8500**
+- nomad -> port **4646**
+  - traefik -> port **8081** / **80**
+  - webapp -> route **/myapp**
+- vault -> port **8200**
+- docker
 
 **- Tokens**
 
