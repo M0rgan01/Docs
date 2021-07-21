@@ -20,3 +20,7 @@
     - promtail
     - tempo
     - tns-app
+    # OS system info
+    - node-exporter
+    # container info
+    - cadvisor

@@ -47,7 +47,7 @@ dans l'un des dossiers suivants :
 #### Single-node playbook
 
 <p align="center">
-    <img src="nomadConsulVaultSingleNode.png"
+    <img src="./img/nomadConsulVaultSingleNode.png"
     alt="nomadConsul3NodesCluster"
     width="50%"
     />
@@ -63,7 +63,7 @@ $ ansible-playbook -i inventory playbook-single-node.yml
 #### 4 nodes cluster playbook
 
 <p align="center">
-    <img src="nomadConsulVaultCluster.png"
+    <img src="./img/nomadConsulVaultCluster.png"
     alt="nomadConsul3NodesCluster"
     width="50%"
     />
@@ -107,6 +107,24 @@ WebApp:
 - 172.16.0.2/myapp
 - (4-nodes-vm only) 172.16.0.3/myapp
 - (4-nodes-vm only) 172.16.0.4/myapp
+
+Grafana:
+
+- 172.16.0.2:3000 (single-node only)
+
+Promtail:
+
+- 172.16.0.2:3200 (single-node only)
+
+Prometheus:
+
+- 172.16.0.2:9090 (single-node only)
+
+cAdvisor:
+
+- 172.16.0.2:8080 (single-node only)
+
+Traefik:
 
 **- Tokens**
 
