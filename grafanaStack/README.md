@@ -1,9 +1,16 @@
 # GRAFANA STACK
 
+<p align="center">
+    <img src="./img/grafanaStack.png"
+    alt="grafanaStack"
+    width="50%"
+    />
+</p>
+
 ## Grafana
 
-Grafana vous permet d'**interroger**, de **visualiser**, d'**alerter** et de comprendre vos métriques, peu importe 
-où elles sont stockées. 
+Grafana vous permet d'**interroger**, de **visualiser**, d'**alerter** et de comprendre vos métriques, peu importe
+où elles sont stockées.
 
 Créez, explorez et partagez des tableaux de bord avec votre équipe et favorisez une culture axée sur les données.
 
@@ -11,10 +18,10 @@ Créez, explorez et partagez des tableaux de bord avec votre équipe et favorise
 
 ## Prometheus
 
-Prometheus, un projet de la [Cloud Native Computing Foundation](https://www.cncf.io/), permet la surveillance 
-de système et de service. 
+Prometheus, un projet de la [Cloud Native Computing Foundation](https://www.cncf.io/), permet la surveillance
+de système et de service.
 
-Il collecte les **métriques** des cibles configurées à des intervalles donnés, évalue les expressions de règle, 
+Il collecte les **métriques** des cibles configurées à des intervalles donnés, évalue les expressions de règle,
 affiche les résultats et peut déclencher des alertes lorsque des conditions spécifiées sont observées.
 
 <p align="center">
@@ -32,7 +39,7 @@ affiche les résultats et peut déclencher des alertes lorsque des conditions sp
 </p>
 
 
-##  Loki 
+##  Loki
 
 Un système d'agrégation de **logs** multi-tenant inspiré de Prometheus.
 
